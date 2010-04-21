@@ -41,6 +41,9 @@
     
     popoverController = [[UIPopoverController alloc] initWithContentViewController:infoViewController];
     popoverController.popoverContentSize = CGSizeMake(150, 200);
+    
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:0.04];
+    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
 
@@ -88,6 +91,12 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [hiddenField resignFirstResponder];
+}
+
+#pragma mark Accelerometer handling
+
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+    NSLog(@"accelerometer state x:%0.2f y:%0.2f z:0.2f", acceleration.x, acceleration.y, acceleration.z);
 }
 
 @end

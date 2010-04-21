@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #include "OAInfoViewController.h"
 
-@interface OptiActorViewController : UIViewController <UITextFieldDelegate> {
+@interface OptiActorViewController : UIViewController <UITextFieldDelegate, UIAccelerometerDelegate> {
     IBOutlet OAInfoViewController *infoViewController;
     
     UIPopoverController *popoverController;
