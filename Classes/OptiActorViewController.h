@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OptiActorViewController : UIViewController {
-
+@interface OptiActorViewController : UIViewController <UITextFieldDelegate> {
+    UITextField *hiddenField;
 }
+
+- (IBAction)showKeyboard:(id)sender;
+- (IBAction)showInfo:(id)sender;
 
 @end
 

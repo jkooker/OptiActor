@@ -28,12 +28,16 @@
 */
 
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    hiddenField = [[UITextField alloc] initWithFrame:CGRectZero];
+    [hiddenField setDelegate:self];
+    [self.view addSubview:hiddenField];
 }
-*/
+
 
 
 // Override to allow orientations other than the default portrait orientation.
@@ -55,7 +59,30 @@
 
 
 - (void)dealloc {
+    [hiddenField release];
     [super dealloc];
+}
+
+#pragma mark IBActions
+- (IBAction)showKeyboard:(id)sender {
+    // take first responder
+    [hiddenField becomeFirstResponder];
+}
+
+- (IBAction)showInfo:(id)sender {
+    // show popover with IP and Port info
+}
+
+#pragma mark UITextFieldDelegate methods
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSLog(@"incoming text: %@", string);
+    return NO; // don't actually change the text field contents
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    NSLog(@"textFieldDidEndEditing");
+    [hiddenField resignFirstResponder];
 }
 
 @end
