@@ -9,6 +9,8 @@
 #import "OACGLXController.h"
 //#import "cglX.h"
 
+int charToKeyCode(unichar a);
+
 @implementation OACGLXController
 
 - (void)mouseMovedToX:(float)x Y:(float)y {
@@ -20,8 +22,15 @@
 }
 
 - (void)keyPress:(NSString *)key {
-    int keycode = 0;
+    unichar a = [key characterAtIndex:0];
+    int keycode = charToKeyCode(a);
+
     NSLog(@"key code: %d", keycode);
 }
 
 @end
+
+int charToKeyCode(unichar a) {
+    // TODO: implement lookup table here
+    return a;
+}
