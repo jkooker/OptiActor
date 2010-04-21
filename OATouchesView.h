@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OACGLXController.h"
 
 @interface OATouchesView : UIView {
+    IBOutlet OACGLXController *cglxController;
+    
     CGPoint touchPoint;
 }
+
+@property (nonatomic, retain) IBOutlet OACGLXController *cglxController;
 
 @end

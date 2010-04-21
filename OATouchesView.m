@@ -11,6 +11,7 @@
 
 @implementation OATouchesView
 
+@synthesize cglxController;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -52,7 +53,11 @@
         touchPoint.y = [touch locationInView:self].y;
         [self setNeedsDisplay];
         
-        NSLog(@"new touch at %@", NSStringFromCGPoint([touch locationInView:self]));
+        float x = touchPoint.x / [self bounds].size.width;
+        float y = touchPoint.y / [self bounds].size.height;
+        
+        //NSLog(@"new touch at %@", NSStringFromCGPoint([touch locationInView:self]));
+        [cglxController mouseMovedToX:x Y:y];
     }
 }
 
@@ -63,7 +68,11 @@
         touchPoint.y = [touch locationInView:self].y;
         [self setNeedsDisplay];
         
-        NSLog(@"touch moved to %@", NSStringFromCGPoint([touch locationInView:self]));
+        float x = touchPoint.x / [self bounds].size.width;
+        float y = touchPoint.y / [self bounds].size.height;
+
+        //NSLog(@"touch moved to %@", NSStringFromCGPoint([touch locationInView:self]));
+        [cglxController mouseMovedToX:x Y:y];
     }
 }
 
@@ -74,7 +83,7 @@
         touchPoint.y = -50;
         [self setNeedsDisplay];
 
-        NSLog(@"touch ended at %@", NSStringFromCGPoint([touch locationInView:self]));
+        //NSLog(@"touch ended at %@", NSStringFromCGPoint([touch locationInView:self]));
     }
 }
 

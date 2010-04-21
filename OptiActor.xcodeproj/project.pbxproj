@@ -17,6 +17,7 @@
 		28D7ACF80DDB3853001CB0EB /* OptiActorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* OptiActorViewController.m */; };
 		9BE5AD02117EC87A005841FC /* OAInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5AD00117EC87A005841FC /* OAInfoViewController.m */; };
 		9BE5AD03117EC87A005841FC /* OAInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE5AD01117EC87A005841FC /* OAInfoViewController.xib */; };
+		9BE5AD9E117ED83E005841FC /* OACGLXController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5AD9D117ED83E005841FC /* OACGLXController.m */; };
 		9BFA0B3B117E973D00830FF4 /* cglx_logo_1.2_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BFA0B3A117E973D00830FF4 /* cglx_logo_1.2_small.png */; };
 		9BFA0B3F117E9A6400830FF4 /* OATouchesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA0B3E117E9A6400830FF4 /* OATouchesView.m */; };
 		9BFA0B91117EA25C00830FF4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BFA0B90117EA25C00830FF4 /* icon.png */; };
@@ -48,6 +49,8 @@
 		9BE5ACFF117EC87A005841FC /* OAInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAInfoViewController.h; path = ../OAInfoViewController.h; sourceTree = "<group>"; };
 		9BE5AD00117EC87A005841FC /* OAInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAInfoViewController.m; path = ../OAInfoViewController.m; sourceTree = "<group>"; };
 		9BE5AD01117EC87A005841FC /* OAInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OAInfoViewController.xib; sourceTree = "<group>"; };
+		9BE5AD9C117ED83E005841FC /* OACGLXController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OACGLXController.h; path = ../OACGLXController.h; sourceTree = "<group>"; };
+		9BE5AD9D117ED83E005841FC /* OACGLXController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OACGLXController.m; path = ../OACGLXController.m; sourceTree = "<group>"; };
 		9BFA0B3A117E973D00830FF4 /* cglx_logo_1.2_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cglx_logo_1.2_small.png; sourceTree = "<group>"; };
 		9BFA0B3D117E9A6400830FF4 /* OATouchesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OATouchesView.h; path = ../OATouchesView.h; sourceTree = "<group>"; };
 		9BFA0B3E117E9A6400830FF4 /* OATouchesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OATouchesView.m; path = ../OATouchesView.m; sourceTree = "<group>"; };
@@ -79,6 +82,8 @@
 				9BFA0B3E117E9A6400830FF4 /* OATouchesView.m */,
 				9BE5ACFF117EC87A005841FC /* OAInfoViewController.h */,
 				9BE5AD00117EC87A005841FC /* OAInfoViewController.m */,
+				9BE5AD9C117ED83E005841FC /* OACGLXController.h */,
+				9BE5AD9D117ED83E005841FC /* OACGLXController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				28D7ACF80DDB3853001CB0EB /* OptiActorViewController.m in Sources */,
 				9BFA0B3F117E9A6400830FF4 /* OATouchesView.m in Sources */,
 				9BE5AD02117EC87A005841FC /* OAInfoViewController.m in Sources */,
+				9BE5AD9E117ED83E005841FC /* OACGLXController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

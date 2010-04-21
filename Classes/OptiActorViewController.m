@@ -11,6 +11,7 @@
 @implementation OptiActorViewController
 
 @synthesize infoViewController;
+@synthesize cglxController;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -85,7 +86,8 @@
 #pragma mark UITextFieldDelegate methods
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSLog(@"incoming text: %@", string);
+    //NSLog(@"incoming text: %@", string);
+    [cglxController keyPress:string];
     return NO; // don't actually change the text field contents
 }
 
@@ -96,7 +98,7 @@
 #pragma mark Accelerometer handling
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
-    NSLog(@"accelerometer state x:%0.2f y:%0.2f z:0.2f", acceleration.x, acceleration.y, acceleration.z);
+    [cglxController updateAcceleration:acceleration];
 }
 
 @end

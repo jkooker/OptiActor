@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OACGLXController.h"
 
 @interface OAInfoViewController : UIViewController {
-
+    IBOutlet OACGLXController *cglxController;
 }
+
+@property (nonatomic, retain) IBOutlet OACGLXController *cglxController;
 
 @end
