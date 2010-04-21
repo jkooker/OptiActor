@@ -26,8 +26,8 @@
 - (void)drawRect:(CGRect)rect {
     if (touchPoint.x > 0) {
         CGContextRef contextRef = UIGraphicsGetCurrentContext();
-        CGContextSetRGBFillColor(contextRef, 0, 0, 0.4, 1);
-        CGContextSetRGBStrokeColor(contextRef, 0, 0, 1, 1);
+        CGContextSetRGBFillColor(contextRef, 0, 0, 0.4, 0.8);
+        CGContextSetRGBStrokeColor(contextRef, 0, 0, 1, 0.9);
         CGContextSetLineWidth(contextRef, 3);
         
         CGRect circle_rect = CGRectMake(touchPoint.x - CIRCLE_RADIUS, touchPoint.y - CIRCLE_RADIUS, 2 * CIRCLE_RADIUS, 2 * CIRCLE_RADIUS);
