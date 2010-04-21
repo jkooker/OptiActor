@@ -34,7 +34,8 @@
     [super viewDidLoad];
     
     hiddenField = [[UITextField alloc] initWithFrame:CGRectZero];
-    [hiddenField setDelegate:self];
+    hiddenField.delegate = self;
+    hiddenField.text = @"0"; // throw in a character so the delete key will work!
     [self.view addSubview:hiddenField];
 }
 
@@ -81,7 +82,6 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"textFieldDidEndEditing");
     [hiddenField resignFirstResponder];
 }
 
