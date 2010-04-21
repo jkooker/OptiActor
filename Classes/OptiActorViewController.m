@@ -10,6 +10,7 @@
 
 @implementation OptiActorViewController
 
+@synthesize infoViewController;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -37,6 +38,9 @@
     hiddenField.delegate = self;
     hiddenField.text = @"0"; // throw in a character so the delete key will work!
     [self.view addSubview:hiddenField];
+    
+    popoverController = [[UIPopoverController alloc] initWithContentViewController:infoViewController];
+    popoverController.popoverContentSize = CGSizeMake(150, 200);
 }
 
 
@@ -72,6 +76,7 @@
 
 - (IBAction)showInfo:(id)sender {
     // show popover with IP and Port info
+    [popoverController presentPopoverFromRect:[sender frame] inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark UITextFieldDelegate methods
