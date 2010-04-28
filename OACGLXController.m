@@ -17,6 +17,14 @@ int charToKeyCode(unichar a);
     NSLog(@"Mouse motion to x:%0.2f y:%0.2f", x, y);
 }
 
+- (void)wheelMotionUp {
+    NSLog(@"wheelMotionUp");
+}
+
+- (void)wheelMotionDown {
+    NSLog(@"wheelMotionDown");
+}
+
 - (void)updateAcceleration:(UIAcceleration *)acceleration {
     //NSLog(@"accelerometer update x:%0.2f y:%0.2f z:0.2f", acceleration.x, acceleration.y, acceleration.z);
 }

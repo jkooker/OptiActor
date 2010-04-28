@@ -14,6 +14,8 @@
 }
 
 - (void)mouseMovedToX:(float)x Y:(float)y;
+- (void)wheelMotionUp;
+- (void)wheelMotionDown;
 - (void)updateAcceleration:(UIAcceleration *)acceleration;
 - (void)keyPress:(NSString *)key;
 

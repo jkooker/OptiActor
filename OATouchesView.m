@@ -72,9 +72,15 @@
         float y = p.y / [self bounds].size.height;
 
         [cglxController mouseMovedToX:x Y:y];
+    } else if ([touchPoints count] == 2) {
+        // wheel up/down based on touch motion
+        UITouch *touch = [touches anyObject];
+        if ([touch locationInView:self].y > [touch previousLocationInView:self].y) {
+            [cglxController wheelMotionDown];
+        } else {
+            [cglxController wheelMotionUp];
+        }
     }
-    
-    NSLog(@"point count: %d", [touchPoints count]);
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
