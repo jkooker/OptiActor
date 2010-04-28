@@ -7,7 +7,7 @@
 //
 
 #import "OACGLXController.h"
-//#import "cglX.h"
+//#import "cglXnet/cglXNet.h"
 
 int charToKeyCode(unichar a);
 
@@ -18,7 +18,7 @@ int charToKeyCode(unichar a);
 }
 
 - (void)updateAcceleration:(UIAcceleration *)acceleration {
-    NSLog(@"accelerometer update x:%0.2f y:%0.2f z:0.2f", acceleration.x, acceleration.y, acceleration.z);
+    //NSLog(@"accelerometer update x:%0.2f y:%0.2f z:0.2f", acceleration.x, acceleration.y, acceleration.z);
 }
 
 - (void)keyPress:(NSString *)key {
