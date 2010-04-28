@@ -15,6 +15,7 @@
 		2899E5220DE3E06400AC0155 /* OptiActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* OptiActorViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* OptiActorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* OptiActorViewController.m */; };
+		9B5471E111819C9C0041766E /* cglXnet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5471E011819C9C0041766E /* cglXnet.framework */; };
 		9BE5AD02117EC87A005841FC /* OAInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5AD00117EC87A005841FC /* OAInfoViewController.m */; };
 		9BE5AD03117EC87A005841FC /* OAInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE5AD01117EC87A005841FC /* OAInfoViewController.xib */; };
 		9BE5AD9E117ED83E005841FC /* OACGLXController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5AD9D117ED83E005841FC /* OACGLXController.m */; };
@@ -37,15 +38,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* OptiActor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptiActor_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* OptiActor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OptiActor-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		9BE5ACF4117EC5AB005841FC /* cglX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cglX.h; sourceTree = "<group>"; };
-		9BE5ACF5117EC5AB005841FC /* cglXConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cglXConfig.h; sourceTree = "<group>"; };
-		9BE5ACF6117EC5AB005841FC /* cglXDataInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cglXDataInstance.h; sourceTree = "<group>"; };
-		9BE5ACF7117EC5AB005841FC /* cglXExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cglXExt.h; sourceTree = "<group>"; };
-		9BE5ACF8117EC5AB005841FC /* cglXGeom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cglXGeom.h; sourceTree = "<group>"; };
-		9BE5ACF9117EC5AB005841FC /* cglXKeyCodeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cglXKeyCodeMap.h; sourceTree = "<group>"; };
-		9BE5ACFA117EC5AB005841FC /* cglXMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cglXMath.h; sourceTree = "<group>"; };
-		9BE5ACFB117EC5AB005841FC /* cglXNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cglXNet.h; sourceTree = "<group>"; };
-		9BE5ACFC117EC5AB005841FC /* cglXXMLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cglXXMLTags.h; sourceTree = "<group>"; };
+		9B5471E011819C9C0041766E /* cglXnet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = cglXnet.framework; sourceTree = "<group>"; };
 		9BE5ACFF117EC87A005841FC /* OAInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAInfoViewController.h; path = ../OAInfoViewController.h; sourceTree = "<group>"; };
 		9BE5AD00117EC87A005841FC /* OAInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAInfoViewController.m; path = ../OAInfoViewController.m; sourceTree = "<group>"; };
 		9BE5AD01117EC87A005841FC /* OAInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OAInfoViewController.xib; sourceTree = "<group>"; };
@@ -65,6 +58,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				9B5471E111819C9C0041766E /* cglXnet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +105,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				9BE5ACF3117EC5AB005841FC /* include */,
 				32CA4F630368D1EE00C91783 /* OptiActor_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -134,27 +127,12 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9B5471E011819C9C0041766E /* cglXnet.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9BE5ACF3117EC5AB005841FC /* include */ = {
-			isa = PBXGroup;
-			children = (
-				9BE5ACF4117EC5AB005841FC /* cglX.h */,
-				9BE5ACF5117EC5AB005841FC /* cglXConfig.h */,
-				9BE5ACF6117EC5AB005841FC /* cglXDataInstance.h */,
-				9BE5ACF7117EC5AB005841FC /* cglXExt.h */,
-				9BE5ACF8117EC5AB005841FC /* cglXGeom.h */,
-				9BE5ACF9117EC5AB005841FC /* cglXKeyCodeMap.h */,
-				9BE5ACFA117EC5AB005841FC /* cglXMath.h */,
-				9BE5ACFB117EC5AB005841FC /* cglXNet.h */,
-				9BE5ACFC117EC5AB005841FC /* cglXXMLTags.h */,
-			);
-			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +209,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -245,6 +227,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OptiActor_Prefix.pch;
 				INFOPLIST_FILE = "OptiActor-Info.plist";

@@ -12,7 +12,7 @@
 @interface OATouchesView : UIView {
     IBOutlet OACGLXController *cglxController;
     
-    CGPoint touchPoint;
+    NSMutableDictionary *touchPoints;
 }
 
 @property (nonatomic, retain) IBOutlet OACGLXController *cglxController;

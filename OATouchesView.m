@@ -13,25 +13,21 @@
 
 @synthesize cglxController;
 
-- (id)initWithFrame:(CGRect)frame {
-    if ((self = [super initWithFrame:frame])) {
-        // Initialization code
-        touchPoint.x = -50;
-        touchPoint.y = -50;
-    }
-    return self;
+- (void)awakeFromNib {
+    touchPoints = [[NSMutableDictionary dictionaryWithCapacity:11] retain];
 }
 
 #define CIRCLE_RADIUS 40
 
 - (void)drawRect:(CGRect)rect {
-    if (touchPoint.x > 0) {
+    for (id key in touchPoints) {
+        CGPoint p = [[touchPoints objectForKey:key] CGPointValue];
         CGContextRef contextRef = UIGraphicsGetCurrentContext();
         CGContextSetRGBFillColor(contextRef, 0, 0, 0.4, 0.8);
         CGContextSetRGBStrokeColor(contextRef, 0, 0, 1, 0.9);
         CGContextSetLineWidth(contextRef, 3);
         
-        CGRect circle_rect = CGRectMake(touchPoint.x - CIRCLE_RADIUS, touchPoint.y - CIRCLE_RADIUS, 2 * CIRCLE_RADIUS, 2 * CIRCLE_RADIUS);
+        CGRect circle_rect = CGRectMake(p.x - CIRCLE_RADIUS, p.y - CIRCLE_RADIUS, 2 * CIRCLE_RADIUS, 2 * CIRCLE_RADIUS);
         
         // Draw a circle (filled)
         CGContextFillEllipseInRect(contextRef, circle_rect);
@@ -45,42 +41,45 @@
 }
 
 #pragma mark Touch Handling
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     for (UITouch *touch in touches) {
-        // monitor and log it
-        touchPoint.x = [touch locationInView:self].x;
-        touchPoint.y = [touch locationInView:self].y;
+        [touchPoints setObject:[NSValue valueWithCGPoint:[touch locationInView:self]] forKey:[NSNumber numberWithUnsignedInteger:[touch hash]]];
         [self setNeedsDisplay];
         
-        float x = touchPoint.x / [self bounds].size.width;
-        float y = touchPoint.y / [self bounds].size.height;
-        
         //NSLog(@"new touch at %@", NSStringFromCGPoint([touch locationInView:self]));
+    }
+    
+    if ([touchPoints count] == 1) {
+        CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
+        float x = p.x / [self bounds].size.width;
+        float y = p.y / [self bounds].size.height;
+
         [cglxController mouseMovedToX:x Y:y];
     }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     for (UITouch *touch in touches) {
-        // monitor and log it
-        touchPoint.x = [touch locationInView:self].x;
-        touchPoint.y = [touch locationInView:self].y;
+        [touchPoints setObject:[NSValue valueWithCGPoint:[touch locationInView:self]] forKey:[NSNumber numberWithUnsignedInteger:[touch hash]]];
         [self setNeedsDisplay];
         
-        float x = touchPoint.x / [self bounds].size.width;
-        float y = touchPoint.y / [self bounds].size.height;
-
         //NSLog(@"touch moved to %@", NSStringFromCGPoint([touch locationInView:self]));
+    }
+    
+    if ([touchPoints count] == 1) {
+        CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
+        float x = p.x / [self bounds].size.width;
+        float y = p.y / [self bounds].size.height;
+
         [cglxController mouseMovedToX:x Y:y];
     }
+    
+    NSLog(@"point count: %d", [touchPoints count]);
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     for (UITouch *touch in touches) {
-        // redraw and log it
-        touchPoint.x = -50;
-        touchPoint.y = -50;
+        [touchPoints removeObjectForKey:[NSNumber numberWithUnsignedInteger:[touch hash]]];
         [self setNeedsDisplay];
 
         //NSLog(@"touch ended at %@", NSStringFromCGPoint([touch locationInView:self]));
