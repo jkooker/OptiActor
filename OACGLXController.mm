@@ -11,7 +11,14 @@
 
 int charToKeyCode(unichar a);
 
+cglXServer *server;
+
 @implementation OACGLXController
+
+- (void)awakeFromNib {
+    server = new cglXServer(CS_HCI_X_SERV, 10291); // TODO: use correct port
+    server->setWaitTime(5000);
+}
 
 - (void)mouseMovedToX:(float)x Y:(float)y {
     NSLog(@"Mouse motion to x:%0.2f y:%0.2f", x, y);
@@ -22,6 +29,8 @@ int charToKeyCode(unichar a);
     motion.mask = 0;
     motion.x = x;
     motion.y = y;
+    
+    server->sendData(&motion);
 }
 
 - (void)wheelMotionUp {
@@ -34,6 +43,8 @@ int charToKeyCode(unichar a);
     event.x = 0;
     event.y = 0;
     event.button = CGLX_WHEEL_UP;
+    
+    server->sendData(&event);
 }
 
 - (void)wheelMotionDown {
@@ -46,6 +57,8 @@ int charToKeyCode(unichar a);
     event.x = 0;
     event.y = 0;
     event.button = CGLX_WHEEL_DOWN;
+    
+    server->sendData(&event);
 }
 
 - (void)updateAcceleration:(UIAcceleration *)acceleration {
@@ -60,6 +73,8 @@ int charToKeyCode(unichar a);
     event.Rx = acceleration.x;
     event.Ry = acceleration.y;
     event.Rz = acceleration.z;
+    
+    server->sendData(&event);
 }
 
 - (void)keyPress:(NSString *)key {
@@ -75,6 +90,13 @@ int charToKeyCode(unichar a);
     keyEvent.x = 0;
     keyEvent.y = 0;
     keyEvent.keycode = keycode;
+    
+    server->sendData(&keyEvent);
+}
+
+- (void)dealloc {
+    delete server;
+    [super dealloc];
 }
 
 @end
