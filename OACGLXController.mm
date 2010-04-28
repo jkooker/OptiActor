@@ -7,7 +7,7 @@
 //
 
 #import "OACGLXController.h"
-//#import "cglXnet/cglXNet.h"
+#import "cglXnet/cglXNet.h"
 
 int charToKeyCode(unichar a);
 
