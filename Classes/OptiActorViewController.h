@@ -24,5 +24,7 @@
 - (IBAction)showKeyboard:(id)sender;
 - (IBAction)showInfo:(id)sender;
 
+- (void)enableAccelerometer:(BOOL)enable;
+
 @end
 

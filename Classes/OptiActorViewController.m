@@ -42,12 +42,16 @@
     
     popoverController = [[UIPopoverController alloc] initWithContentViewController:infoViewController];
     popoverController.popoverContentSize = CGSizeMake(150, 200);
-    
-    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:0.04];
-    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
-
+- (void)enableAccelerometer:(BOOL)enable {
+    if (enable) {
+        [[UIAccelerometer sharedAccelerometer] setUpdateInterval:0.04];
+        [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+    } else {
+        [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
+    }
+}
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
