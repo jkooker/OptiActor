@@ -16,6 +16,7 @@ cglXServer *server;
 @implementation OACGLXController
 
 - (void)awakeFromNib {
+   // server = new cglXServer(CS_HCI_X_SERV, 10291); // TODO: use correct port
     server = new cglXServer(CS_HCI_MT_SERV, 10291); // TODO: use correct port
     server->setWaitTime(5000);
 }
@@ -94,7 +95,7 @@ cglXServer *server;
     server->sendData(&keyEvent);
 }
 
-#define BLOB_RADIUS 0.1
+#define BLOB_RADIUS 0.02
 
 - (void)updateMultitouch:(NSDictionary *)touchPoints bounds:(CGRect)bounds {
     NSUInteger touchCount = [touchPoints count];
@@ -103,10 +104,10 @@ cglXServer *server;
     int i = 0;
     for (id key in touchPoints) {
         CGPoint p = [[touchPoints objectForKey:key] CGPointValue];
-        blobs[i].minX = (p.x - BLOB_RADIUS) / bounds.size.width;
-        blobs[i].minY = (p.y - BLOB_RADIUS) / bounds.size.height;
-        blobs[i].maxX = (p.x + BLOB_RADIUS) / bounds.size.width;
-        blobs[i].maxY = (p.y + BLOB_RADIUS) / bounds.size.height;
+        blobs[i].minX = p.x / bounds.size.width - BLOB_RADIUS;
+        blobs[i].minY = 1 - (p.y / bounds.size.height + BLOB_RADIUS);
+        blobs[i].maxX = p.x / bounds.size.width + BLOB_RADIUS;
+        blobs[i].maxY = 1 - (p.y / bounds.size.height - BLOB_RADIUS);
         blobs[i].pres = 100;
         
         i++;
