@@ -11,3 +11,4 @@ build
 
 include
 cglXnet.framework
+libcglXnet*
