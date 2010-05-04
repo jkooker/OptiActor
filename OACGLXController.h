@@ -18,5 +18,6 @@
 - (void)wheelMotionDown;
 - (void)updateAcceleration:(UIAcceleration *)acceleration;
 - (void)keyPress:(NSString *)key;
+- (void)updateMultitouch:(NSDictionary *)touches bounds:(CGRect)bounds;
 
 @end

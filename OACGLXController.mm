@@ -16,12 +16,12 @@ cglXServer *server;
 @implementation OACGLXController
 
 - (void)awakeFromNib {
-    server = new cglXServer(CS_HCI_X_SERV, 10291); // TODO: use correct port
+    server = new cglXServer(CS_HCI_MT_SERV, 10291); // TODO: use correct port
     server->setWaitTime(5000);
 }
 
 - (void)mouseMovedToX:(float)x Y:(float)y {
-    NSLog(@"Mouse motion to x:%0.2f y:%0.2f", x, y);
+    //NSLog(@"Mouse motion to x:%0.2f y:%0.2f", x, y);
     
     CS_EXT_MOTION_S motion;
     motion.ID = 0;
@@ -34,7 +34,7 @@ cglXServer *server;
 }
 
 - (void)wheelMotionUp {
-    NSLog(@"wheelMotionUp");
+    //NSLog(@"wheelMotionUp");
     
     CS_EXT_MEVENT_S event;
     event.ID = 0;
@@ -48,7 +48,7 @@ cglXServer *server;
 }
 
 - (void)wheelMotionDown {
-    NSLog(@"wheelMotionDown");
+    //NSLog(@"wheelMotionDown");
     
     CS_EXT_MEVENT_S event;
     event.ID = 0;
@@ -92,6 +92,32 @@ cglXServer *server;
     keyEvent.keycode = keycode;
     
     server->sendData(&keyEvent);
+}
+
+#define BLOB_RADIUS 0.1
+
+- (void)updateMultitouch:(NSDictionary *)touchPoints bounds:(CGRect)bounds {
+    NSUInteger touchCount = [touchPoints count];
+    CS_MT_BLOB_S blobs[touchCount];
+    
+    int i = 0;
+    for (id key in touchPoints) {
+        CGPoint p = [[touchPoints objectForKey:key] CGPointValue];
+        blobs[i].minX = (p.x - BLOB_RADIUS) / bounds.size.width;
+        blobs[i].minY = (p.y - BLOB_RADIUS) / bounds.size.height;
+        blobs[i].maxX = (p.x + BLOB_RADIUS) / bounds.size.width;
+        blobs[i].maxY = (p.y + BLOB_RADIUS) / bounds.size.height;
+        blobs[i].pres = 100;
+        
+        i++;
+    }
+    
+    CS_EXT_MULTIT_S allBlobs;
+    allBlobs.ID = 0;
+    allBlobs.num = touchCount;
+    allBlobs.blobs = blobs;
+    
+    server->sendData(&allBlobs);
 }
 
 - (void)dealloc {

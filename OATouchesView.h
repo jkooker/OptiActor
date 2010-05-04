@@ -13,8 +13,10 @@
     IBOutlet OACGLXController *cglxController;
     
     NSMutableDictionary *touchPoints;
+    BOOL sendRawMultitouch;
 }
 
 @property (nonatomic, retain) IBOutlet OACGLXController *cglxController;
+@property BOOL sendRawMultitouch;
 
 @end

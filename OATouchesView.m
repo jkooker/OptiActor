@@ -12,9 +12,11 @@
 @implementation OATouchesView
 
 @synthesize cglxController;
+@synthesize sendRawMultitouch;
 
 - (void)awakeFromNib {
     touchPoints = [[NSMutableDictionary dictionaryWithCapacity:11] retain];
+    sendRawMultitouch = YES;
 }
 
 #define CIRCLE_RADIUS 40
@@ -49,13 +51,19 @@
         //NSLog(@"new touch at %@", NSStringFromCGPoint([touch locationInView:self]));
     }
     
-    if ([touchPoints count] == 1) {
-        CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
-        float x = p.x / [self bounds].size.width;
-        float y = p.y / [self bounds].size.height;
+    // Touch Processing
+    if (sendRawMultitouch) {
+        [cglxController updateMultitouch:touchPoints bounds:[self bounds]];
+    } else {
+        if ([touchPoints count] == 1) {
+            CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
+            float x = p.x / [self bounds].size.width;
+            float y = p.y / [self bounds].size.height;
 
-        [cglxController mouseMovedToX:x Y:y];
+            [cglxController mouseMovedToX:x Y:y];
+        }
     }
+
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -66,19 +74,23 @@
         //NSLog(@"touch moved to %@", NSStringFromCGPoint([touch locationInView:self]));
     }
     
-    if ([touchPoints count] == 1) {
-        CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
-        float x = p.x / [self bounds].size.width;
-        float y = p.y / [self bounds].size.height;
+    if (sendRawMultitouch) {
+        [cglxController updateMultitouch:touchPoints bounds:[self bounds]];
+    } else {
+        if ([touchPoints count] == 1) {
+            CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
+            float x = p.x / [self bounds].size.width;
+            float y = p.y / [self bounds].size.height;
 
-        [cglxController mouseMovedToX:x Y:y];
-    } else if ([touchPoints count] == 2) {
-        // wheel up/down based on touch motion
-        UITouch *touch = [touches anyObject];
-        if ([touch locationInView:self].y > [touch previousLocationInView:self].y) {
-            [cglxController wheelMotionDown];
-        } else {
-            [cglxController wheelMotionUp];
+            [cglxController mouseMovedToX:x Y:y];
+        } else if ([touchPoints count] == 2) {
+            // wheel up/down based on touch motion
+            UITouch *touch = [touches anyObject];
+            if ([touch locationInView:self].y > [touch previousLocationInView:self].y) {
+                [cglxController wheelMotionDown];
+            } else {
+                [cglxController wheelMotionUp];
+            }
         }
     }
 }
@@ -89,6 +101,10 @@
         [self setNeedsDisplay];
 
         //NSLog(@"touch ended at %@", NSStringFromCGPoint([touch locationInView:self]));
+    }
+    
+    if (sendRawMultitouch) {
+        [cglxController updateMultitouch:touchPoints bounds:[self bounds]];
     }
 }
 
