@@ -47,6 +47,8 @@ typedef enum {
 - (IBAction)showInfo:(id)sender;
 
 - (void)showMouseButtons:(BOOL)show;
+- (IBAction)mouseButtonDown:(id)sender;
+- (IBAction)mouseButtonUp:(id)sender;
 
 - (void)enableAccelerometer:(BOOL)enable;
 

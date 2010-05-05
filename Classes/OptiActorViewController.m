@@ -8,6 +8,7 @@
 
 #import "OptiActorViewController.h"
 #import "OAInfoViewController.h"
+#import "cglXnet/cglXKeyCodeMap.h"
 
 @implementation OptiActorViewController
 
@@ -48,15 +49,6 @@
     
     popoverController = [[UIPopoverController alloc] initWithContentViewController:infoViewController];
     popoverController.popoverContentSize = CGSizeMake(320, 400);
-}
-
-- (void)enableAccelerometer:(BOOL)enable {
-    if (enable) {
-        [[UIAccelerometer sharedAccelerometer] setUpdateInterval:0.04];
-        [[UIAccelerometer sharedAccelerometer] setDelegate:self];
-    } else {
-        [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
-    }
 }
 
 // Override to allow orientations other than the default portrait orientation.
@@ -145,6 +137,31 @@
         rightButton.hidden = YES;
     }
 }
+
+- (IBAction)mouseButtonDown:(id)sender {
+    if (sender == leftButton) {
+        cglxController.mouseButtonState = CGLX_LEFT_BUTTON;
+    } else if (sender == middleButton) {
+        cglxController.mouseButtonState = CGLX_MIDDLE_BUTTON;
+    } else if (sender == rightButton) {
+        cglxController.mouseButtonState = CGLX_RIGHT_BUTTON;
+    }
+}
+
+- (IBAction)mouseButtonUp:(id)sender {
+    cglxController.mouseButtonState = 0;
+}
+
+- (void)enableAccelerometer:(BOOL)enable {
+    if (enable) {
+        [[UIAccelerometer sharedAccelerometer] setUpdateInterval:0.04];
+        [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+    } else {
+        [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
+    }
+}
+
+#pragma mark Accelerometer handling
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     [cglxController updateAcceleration:acceleration];
