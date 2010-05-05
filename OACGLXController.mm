@@ -19,7 +19,7 @@ cglXServer *server;
 - (void)awakeFromNib {
     //server = new cglXServer(CS_HCI_X_SERV, 10291);
     server = new cglXServer(CS_HCI_MT_SERV, 10291);
-    server->setWaitTime(5000);
+    server->setWaitTime(0);
     
     self.sendAtConstantRate = NO;
 }
