@@ -79,6 +79,25 @@ enum OASection {
     return OASectionCount;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *retVal = @"";
+    
+    switch (section) {
+        case OASectionNetwork:
+            retVal = @"Network";
+            break;
+        case OASectionTouchInterface:
+            retVal = @"Touch Interface";
+            break;
+        case OASectionOther:
+            retVal = @"Other";
+            break;
+        default:
+            break;
+    }
+    
+    return retVal;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
