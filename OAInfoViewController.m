@@ -135,6 +135,7 @@ enum OASection {
     cell.textLabel.text = @"";
     cell.detailTextLabel.text = @"";
     cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     switch (indexPath.section) {
         case OASectionNetwork:
@@ -152,6 +153,8 @@ enum OASection {
             }
             break;
         case OASectionTouchInterface:
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            
             switch (indexPath.row) {
                 case OATouchProcessingTypeMouse:
                     cell.textLabel.text = @"Mouse";
