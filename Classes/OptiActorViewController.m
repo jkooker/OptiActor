@@ -12,6 +12,7 @@
 
 @synthesize infoViewController;
 @synthesize cglxController;
+@synthesize touchProcessingType;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -40,7 +41,7 @@
     hiddenField.text = @"0"; // throw in a character so the delete key will work!
     [self.view addSubview:hiddenField];
     
-    popoverController = [[UIPopoverController alloc] initWithContentViewController:infoViewController];
+    popoverController = [[UIPopoverController alloc] initWithContentViewController:(UIViewController *)infoViewController];
     popoverController.popoverContentSize = CGSizeMake(320, 400);
 }
 

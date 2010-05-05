@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OAInfoViewController.h"
 #import "OACGLXController.h"
+
+@class OAInfoViewController;
+
+typedef enum {
+    OATouchProcessingTypeMouse,
+    OATouchProcessingTypeMultitouchEvent,
+    OATouchProcessingTypeMultitouchConstant,
+    // ----
+    OATouchProcessingTypeCount
+} OATouchProcessingType;
 
 @interface OptiActorViewController : UIViewController <UITextFieldDelegate, UIAccelerometerDelegate> {
     IBOutlet OAInfoViewController *infoViewController;
@@ -16,10 +25,13 @@
     
     UIPopoverController *popoverController;
     UITextField *hiddenField;
+    
+    OATouchProcessingType touchProcessingType;
 }
 
 @property (nonatomic, assign) IBOutlet OAInfoViewController *infoViewController;
 @property (nonatomic, retain) IBOutlet OACGLXController *cglxController;
+@property OATouchProcessingType touchProcessingType;
 
 - (IBAction)showKeyboard:(id)sender;
 - (IBAction)showInfo:(id)sender;

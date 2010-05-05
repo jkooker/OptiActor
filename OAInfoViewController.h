@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class OptiActorViewController;
+#import "OptiActorViewController.h"
 
 @interface OAInfoViewController : UITableViewController {
     IBOutlet OptiActorViewController *mainViewController;
     
     UISwitch *accelerometerSwitch;
-    NSUInteger touchProcessingType;
 }
 
 @property (retain, nonatomic) IBOutlet OptiActorViewController *mainViewController;
+
+- (IBAction)switchAccelerometer:(id)sender;
 
 @end

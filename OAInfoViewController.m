@@ -58,14 +58,6 @@
 #pragma mark -
 #pragma mark Table view data source
 
-enum OATouchProcessingType {
-    OATouchProcessingTypeMouse,
-    OATouchProcessingTypeMultitouchEvent,
-    OATouchProcessingTypeMultitouchConstant,
-    // ----
-    OATouchProcessingTypeCount
-};
-
 enum OASection {
     OASectionNetwork,
     OASectionTouchInterface,
@@ -158,20 +150,20 @@ enum OASection {
             switch (indexPath.row) {
                 case OATouchProcessingTypeMouse:
                     cell.textLabel.text = @"Mouse";
-                    if (touchProcessingType == OATouchProcessingTypeMouse) {
+                    if (mainViewController.touchProcessingType == OATouchProcessingTypeMouse) {
                         cell.accessoryType = UITableViewCellAccessoryCheckmark;
                     }
                     break;
                 case OATouchProcessingTypeMultitouchEvent:
                     cell.textLabel.text = @"Multitouch (Event Driven)";
-                    if (touchProcessingType == OATouchProcessingTypeMultitouchEvent) {
+                    if (mainViewController.touchProcessingType == OATouchProcessingTypeMultitouchEvent) {
                         cell.accessoryType = UITableViewCellAccessoryCheckmark;
                     }
                     break;
                 case OATouchProcessingTypeMultitouchConstant:
                     cell.textLabel.text = @"Multitouch (Constant Rate)";
                     cell.detailTextLabel.text = @"";
-                    if (touchProcessingType == OATouchProcessingTypeMultitouchConstant) {
+                    if (mainViewController.touchProcessingType == OATouchProcessingTypeMultitouchConstant) {
                         cell.accessoryType = UITableViewCellAccessoryCheckmark;
                     }
                     break;
@@ -242,9 +234,9 @@ enum OASection {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == OASectionTouchInterface) {
-        [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:touchProcessingType inSection:indexPath.section]].accessoryType = UITableViewCellAccessoryNone;
+        [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:mainViewController.touchProcessingType inSection:indexPath.section]].accessoryType = UITableViewCellAccessoryNone;
         
-        touchProcessingType = indexPath.row;
+        mainViewController.touchProcessingType = indexPath.row;
         
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         
@@ -258,6 +250,7 @@ enum OASection {
 
 - (void)awakeFromNib {
     accelerometerSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+    [accelerometerSwitch addTarget:self action:@selector(switchAccelerometer:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -278,6 +271,12 @@ enum OASection {
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark IBActions
+
+- (IBAction)switchAccelerometer:(id)sender {
+    [mainViewController enableAccelerometer:accelerometerSwitch.on];
+}
 
 @end
 
