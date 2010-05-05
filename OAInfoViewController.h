@@ -14,6 +14,7 @@
     IBOutlet OptiActorViewController *mainViewController;
     
     UISwitch *accelerometerSwitch;
+    NSUInteger touchProcessingType;
 }
 
 @property (retain, nonatomic) IBOutlet OptiActorViewController *mainViewController;

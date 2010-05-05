@@ -131,8 +131,10 @@ enum OASection {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
-    cell.textLabel.text = @"testing.";
+    // Configure the cell to default properties
+    cell.textLabel.text = @"";
+    cell.detailTextLabel.text = @"";
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
     switch (indexPath.section) {
         case OASectionNetwork:
@@ -140,12 +142,10 @@ enum OASection {
                 case 0:
                     cell.textLabel.text = @"IP";
                     cell.detailTextLabel.text = @"0.0.0.0";
-                    cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
                 case 1:
                     cell.textLabel.text = @"Port";
                     cell.detailTextLabel.text = @"10291";
-                    cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
                 default:
                     break;
@@ -155,18 +155,22 @@ enum OASection {
             switch (indexPath.row) {
                 case OATouchProcessingTypeMouse:
                     cell.textLabel.text = @"Mouse";
-                    cell.detailTextLabel.text = @"";
-                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    if (touchProcessingType == OATouchProcessingTypeMouse) {
+                        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    }
                     break;
                 case OATouchProcessingTypeMultitouchEvent:
                     cell.textLabel.text = @"Multitouch (Event Driven)";
-                    cell.detailTextLabel.text = @"";
-                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    if (touchProcessingType == OATouchProcessingTypeMultitouchEvent) {
+                        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    }
                     break;
                 case OATouchProcessingTypeMultitouchConstant:
                     cell.textLabel.text = @"Multitouch (Constant Rate)";
                     cell.detailTextLabel.text = @"";
-                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    if (touchProcessingType == OATouchProcessingTypeMultitouchConstant) {
+                        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    }
                     break;
                 default:
                     break;
@@ -176,8 +180,6 @@ enum OASection {
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = @"Accelerometer";
-                    cell.detailTextLabel.text = @"";
-                    cell.accessoryType = UITableViewCellAccessoryNone;
                     cell.accessoryView = accelerometerSwitch;
                     break;
                 default:
