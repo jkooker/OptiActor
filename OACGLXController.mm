@@ -14,11 +14,14 @@ int charToKeyCode(unichar a);
 cglXServer *server;
 
 @implementation OACGLXController
+@synthesize sendAtConstantRate;
 
 - (void)awakeFromNib {
-   // server = new cglXServer(CS_HCI_X_SERV, 10291); // TODO: use correct port
-    server = new cglXServer(CS_HCI_MT_SERV, 10291); // TODO: use correct port
+    //server = new cglXServer(CS_HCI_X_SERV, 10291);
+    server = new cglXServer(CS_HCI_MT_SERV, 10291);
     server->setWaitTime(5000);
+    
+    self.sendAtConstantRate = NO;
 }
 
 - (void)mouseMovedToX:(float)x Y:(float)y {

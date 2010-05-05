@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OACGLXController.h"
+#import "OATouchesView.h"
 
 @class OAInfoViewController;
 
@@ -22,7 +23,8 @@ typedef enum {
 @interface OptiActorViewController : UIViewController <UITextFieldDelegate, UIAccelerometerDelegate> {
     IBOutlet OAInfoViewController *infoViewController;
     IBOutlet OACGLXController *cglxController;
-    
+    IBOutlet OATouchesView *touchesView;
+        
     UIPopoverController *popoverController;
     UITextField *hiddenField;
     
@@ -31,10 +33,13 @@ typedef enum {
 
 @property (nonatomic, assign) IBOutlet OAInfoViewController *infoViewController;
 @property (nonatomic, retain) IBOutlet OACGLXController *cglxController;
+@property (nonatomic, retain) IBOutlet OATouchesView *touchesView;
 @property OATouchProcessingType touchProcessingType;
 
 - (IBAction)showKeyboard:(id)sender;
 - (IBAction)showInfo:(id)sender;
+
+- (void)showMouseButtons:(BOOL)show;
 
 - (void)enableAccelerometer:(BOOL)enable;
 

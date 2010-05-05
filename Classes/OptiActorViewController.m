@@ -7,12 +7,14 @@
 //
 
 #import "OptiActorViewController.h"
+#import "OAInfoViewController.h"
 
 @implementation OptiActorViewController
 
 @synthesize infoViewController;
 @synthesize cglxController;
-@synthesize touchProcessingType;
+@synthesize touchesView;
+@dynamic touchProcessingType;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -41,7 +43,7 @@
     hiddenField.text = @"0"; // throw in a character so the delete key will work!
     [self.view addSubview:hiddenField];
     
-    popoverController = [[UIPopoverController alloc] initWithContentViewController:(UIViewController *)infoViewController];
+    popoverController = [[UIPopoverController alloc] initWithContentViewController:infoViewController];
     popoverController.popoverContentSize = CGSizeMake(320, 400);
 }
 
@@ -100,7 +102,46 @@
     [hiddenField resignFirstResponder];
 }
 
-#pragma mark Accelerometer handling
+#pragma mark Other
+
+- (OATouchProcessingType)touchProcessingType {
+    return touchProcessingType;
+}
+
+- (void)setTouchProcessingType:(OATouchProcessingType)type {
+    // Tell touchesView to do multitouch or not
+    // Hide/show mouse buttons
+    
+    switch (type) {
+        case OATouchProcessingTypeMouse:
+            [self showMouseButtons:YES];
+            touchesView.sendRawMultitouch = NO;
+            break;
+        case OATouchProcessingTypeMultitouchEvent:
+            [self showMouseButtons:NO];
+            touchesView.sendRawMultitouch = YES;
+            cglxController.sendAtConstantRate = NO;
+            break;
+        case OATouchProcessingTypeMultitouchConstant:
+            [self showMouseButtons:NO];
+            touchesView.sendRawMultitouch = YES;
+            cglxController.sendAtConstantRate = YES;
+            break;
+        default:
+            break;
+    }
+
+    touchProcessingType = type;
+}
+
+- (void)showMouseButtons:(BOOL)show {
+    if (show) {
+        // display them
+    } else {
+        // hide them
+    }
+
+}
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     [cglxController updateAcceleration:acceleration];
