@@ -12,6 +12,8 @@
 
 @interface OAInfoViewController : UITableViewController {
     IBOutlet OptiActorViewController *mainViewController;
+    
+    UISwitch *accelerometerSwitch;
 }
 
 @property (retain, nonatomic) IBOutlet OptiActorViewController *mainViewController;

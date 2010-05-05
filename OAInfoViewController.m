@@ -128,11 +128,65 @@ enum OASection {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
     cell.textLabel.text = @"testing.";
+    
+    switch (indexPath.section) {
+        case OASectionNetwork:
+            switch (indexPath.row) {
+                case 0:
+                    cell.textLabel.text = @"IP";
+                    cell.detailTextLabel.text = @"0.0.0.0";
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    break;
+                case 1:
+                    cell.textLabel.text = @"Port";
+                    cell.detailTextLabel.text = @"10291";
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case OASectionTouchInterface:
+            switch (indexPath.row) {
+                case OATouchProcessingTypeMouse:
+                    cell.textLabel.text = @"Mouse";
+                    cell.detailTextLabel.text = @"";
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    break;
+                case OATouchProcessingTypeMultitouchEvent:
+                    cell.textLabel.text = @"Multitouch (Event Driven)";
+                    cell.detailTextLabel.text = @"";
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    break;
+                case OATouchProcessingTypeMultitouchConstant:
+                    cell.textLabel.text = @"Multitouch (Constant Rate)";
+                    cell.detailTextLabel.text = @"";
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case OASectionOther:
+            switch (indexPath.row) {
+                case 0:
+                    cell.textLabel.text = @"Accelerometer";
+                    cell.detailTextLabel.text = @"";
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    cell.accessoryView = accelerometerSwitch;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
+    }
     
     return cell;
 }
@@ -196,6 +250,10 @@ enum OASection {
 #pragma mark -
 #pragma mark Memory management
 
+- (void)awakeFromNib {
+    accelerometerSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+}
+
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -210,6 +268,7 @@ enum OASection {
 
 
 - (void)dealloc {
+    [accelerometerSwitch release];
     [super dealloc];
 }
 
