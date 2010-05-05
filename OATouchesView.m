@@ -86,10 +86,14 @@
         } else if ([touchPoints count] == 2) {
             // wheel up/down based on touch motion
             UITouch *touch = [touches anyObject];
-            if ([touch locationInView:self].y > [touch previousLocationInView:self].y) {
-                [cglxController wheelMotionDown];
+            CGPoint p = [touch locationInView:self];
+            float x = p.x / [self bounds].size.width;
+            float y = p.y / [self bounds].size.height;
+
+            if (p.y > [touch previousLocationInView:self].y) {
+                [cglxController wheelMotionDownAtX:x Y:y];
             } else {
-                [cglxController wheelMotionUp];
+                [cglxController wheelMotionUpAtX:x Y:y];
             }
         }
     }

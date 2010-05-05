@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface OACGLXController : NSObject {
     BOOL sendAtConstantRate;
     int mouseButtonState;
@@ -18,8 +17,8 @@
 @property int mouseButtonState;
 
 - (void)mouseMovedToX:(float)x Y:(float)y;
-- (void)wheelMotionUp;
-- (void)wheelMotionDown;
+- (void)wheelMotionUpAtX:(float)x Y:(float)y;
+- (void)wheelMotionDownAtX:(float)x Y:(float)y;
 - (void)updateAcceleration:(UIAcceleration *)acceleration;
 - (void)keyPress:(NSString *)key;
 - (void)updateMultitouch:(NSDictionary *)touches bounds:(CGRect)bounds;

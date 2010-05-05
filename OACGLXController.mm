@@ -51,29 +51,29 @@ cglXServer *server;
     }
 }
 
-- (void)wheelMotionUp {
+- (void)wheelMotionUpAtX:(float)x Y:(float)y {
     //NSLog(@"wheelMotionUp");
     
     CS_EXT_MEVENT_S event;
     event.ID = 0;
     event.type = CGLX_ButtonRelease;
     event.mask = 0;
-    event.x = 0;
-    event.y = 0;
+    event.x = x;
+    event.y = y;
     event.button = CGLX_WHEEL_UP;
     
     server->sendData(&event);
 }
 
-- (void)wheelMotionDown {
+- (void)wheelMotionDownAtX:(float)x Y:(float)y {
     //NSLog(@"wheelMotionDown");
     
     CS_EXT_MEVENT_S event;
     event.ID = 0;
     event.type = CGLX_ButtonRelease;
     event.mask = 0;
-    event.x = 0;
-    event.y = 0;
+    event.x = x;
+    event.y = y;
     event.button = CGLX_WHEEL_DOWN;
     
     server->sendData(&event);
@@ -99,7 +99,7 @@ cglXServer *server;
     unichar a = [key characterAtIndex:0];
     int keycode = charToKeyCode(a);
 
-    NSLog(@"key code: %d", keycode);
+    //NSLog(@"key code: %d", keycode);
     
     CS_EXT_KBEVENT_S keyEvent;
     keyEvent.ID = 0;
