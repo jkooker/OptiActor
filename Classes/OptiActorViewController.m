@@ -112,9 +112,6 @@
 }
 
 - (void)setTouchProcessingType:(OATouchProcessingType)type {
-    // Tell touchesView to do multitouch or not
-    // Hide/show mouse buttons
-    
     switch (type) {
         case OATouchProcessingTypeMouse:
             [self showMouseButtons:YES];
@@ -139,17 +136,14 @@
 
 - (void)showMouseButtons:(BOOL)show {
     if (show) {
-        // display them
         leftButton.hidden = NO;
         middleButton.hidden = NO;
         rightButton.hidden = NO;
     } else {
-        // hide them
         leftButton.hidden = YES;
         middleButton.hidden = YES;
         rightButton.hidden = YES;
     }
-
 }
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
