@@ -14,6 +14,9 @@
 @synthesize infoViewController;
 @synthesize cglxController;
 @synthesize touchesView;
+@synthesize leftButton;
+@synthesize middleButton;
+@synthesize rightButton;
 @dynamic touchProcessingType;
 
 /*
@@ -137,8 +140,14 @@
 - (void)showMouseButtons:(BOOL)show {
     if (show) {
         // display them
+        leftButton.hidden = NO;
+        middleButton.hidden = NO;
+        rightButton.hidden = NO;
     } else {
         // hide them
+        leftButton.hidden = YES;
+        middleButton.hidden = YES;
+        rightButton.hidden = YES;
     }
 
 }

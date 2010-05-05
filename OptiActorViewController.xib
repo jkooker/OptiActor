@@ -119,7 +119,7 @@
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
-					<object class="IBUIButton" id="650614374">
+					<object class="IBUIButton" id="726763411">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{20, 870}, {72, 37}}</string>
@@ -148,7 +148,7 @@
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
 					</object>
-					<object class="IBUIButton" id="513515502">
+					<object class="IBUIButton" id="341644976">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{20, 825}, {72, 37}}</string>
@@ -167,7 +167,7 @@
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="750559880"/>
 					</object>
-					<object class="IBUIButton" id="879805058">
+					<object class="IBUIButton" id="781929834">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{20, 780}, {72, 37}}</string>
@@ -307,6 +307,30 @@
 					</object>
 					<int key="connectionID">29</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">rightButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="726763411"/>
+					</object>
+					<int key="connectionID">30</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">middleButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="341644976"/>
+					</object>
+					<int key="connectionID">31</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">leftButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="781929834"/>
+					</object>
+					<int key="connectionID">32</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -338,9 +362,9 @@
 							<reference ref="665010588"/>
 							<reference ref="32192947"/>
 							<reference ref="629480716"/>
-							<reference ref="879805058"/>
-							<reference ref="513515502"/>
-							<reference ref="650614374"/>
+							<reference ref="781929834"/>
+							<reference ref="341644976"/>
+							<reference ref="726763411"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -384,17 +408,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">28</int>
-						<reference key="object" ref="650614374"/>
+						<reference key="object" ref="726763411"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
-						<reference key="object" ref="513515502"/>
+						<reference key="object" ref="341644976"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">26</int>
-						<reference key="object" ref="879805058"/>
+						<reference key="object" ref="781929834"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 				</object>
@@ -460,7 +484,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">29</int>
+			<int key="maxID">32</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -523,12 +547,18 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>cglxController</string>
 							<string>infoViewController</string>
+							<string>leftButton</string>
+							<string>middleButton</string>
+							<string>rightButton</string>
 							<string>touchesView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>OACGLXController</string>
 							<string>OAInfoViewController</string>
+							<string>UIButton</string>
+							<string>UIButton</string>
+							<string>UIButton</string>
 							<string>OATouchesView</string>
 						</object>
 					</object>

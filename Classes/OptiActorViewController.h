@@ -24,7 +24,11 @@ typedef enum {
     IBOutlet OAInfoViewController *infoViewController;
     IBOutlet OACGLXController *cglxController;
     IBOutlet OATouchesView *touchesView;
-        
+    
+    UIButton *leftButton;
+    UIButton *middleButton;
+    UIButton *rightButton;
+    
     UIPopoverController *popoverController;
     UITextField *hiddenField;
     
@@ -34,6 +38,9 @@ typedef enum {
 @property (nonatomic, assign) IBOutlet OAInfoViewController *infoViewController;
 @property (nonatomic, retain) IBOutlet OACGLXController *cglxController;
 @property (nonatomic, retain) IBOutlet OATouchesView *touchesView;
+@property (nonatomic, retain) IBOutlet UIButton *leftButton;
+@property (nonatomic, retain) IBOutlet UIButton *middleButton;
+@property (nonatomic, retain) IBOutlet UIButton *rightButton;
 @property OATouchProcessingType touchProcessingType;
 
 - (IBAction)showKeyboard:(id)sender;
