@@ -16,8 +16,8 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* OptiActorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* OptiActorViewController.m */; };
 		9B2CBE75118FB46000D5F723 /* libcglXnet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2CBE74118FB46000D5F723 /* libcglXnet.a */; };
-		9BE5AD02117EC87A005841FC /* OAInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5AD00117EC87A005841FC /* OAInfoViewController.m */; };
-		9BE5AD03117EC87A005841FC /* OAInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE5AD01117EC87A005841FC /* OAInfoViewController.xib */; };
+		9BA3C2A91191363F007BD00C /* OAInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3C2A71191363F007BD00C /* OAInfoViewController.m */; };
+		9BA3C2AA1191363F007BD00C /* OAInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA3C2A81191363F007BD00C /* OAInfoViewController.xib */; };
 		9BE5AD9E117ED83E005841FC /* OACGLXController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5AD9D117ED83E005841FC /* OACGLXController.mm */; };
 		9BFA0B3B117E973D00830FF4 /* cglx_logo_1.2_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BFA0B3A117E973D00830FF4 /* cglx_logo_1.2_small.png */; };
 		9BFA0B3F117E9A6400830FF4 /* OATouchesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA0B3E117E9A6400830FF4 /* OATouchesView.m */; };
@@ -40,9 +40,9 @@
 		8D1107310486CEB800E47090 /* OptiActor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OptiActor-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9B2CBE74118FB46000D5F723 /* libcglXnet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcglXnet.a; sourceTree = "<group>"; };
 		9B5471E011819C9C0041766E /* cglXnet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = cglXnet.framework; sourceTree = "<group>"; };
-		9BE5ACFF117EC87A005841FC /* OAInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAInfoViewController.h; path = ../OAInfoViewController.h; sourceTree = "<group>"; };
-		9BE5AD00117EC87A005841FC /* OAInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAInfoViewController.m; path = ../OAInfoViewController.m; sourceTree = "<group>"; };
-		9BE5AD01117EC87A005841FC /* OAInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OAInfoViewController.xib; sourceTree = "<group>"; };
+		9BA3C2A61191363F007BD00C /* OAInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAInfoViewController.h; path = ../OAInfoViewController.h; sourceTree = "<group>"; };
+		9BA3C2A71191363F007BD00C /* OAInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAInfoViewController.m; path = ../OAInfoViewController.m; sourceTree = "<group>"; };
+		9BA3C2A81191363F007BD00C /* OAInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OAInfoViewController.xib; sourceTree = "<group>"; };
 		9BE5AD9C117ED83E005841FC /* OACGLXController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OACGLXController.h; path = ../OACGLXController.h; sourceTree = "<group>"; };
 		9BE5AD9D117ED83E005841FC /* OACGLXController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = OACGLXController.mm; path = ../OACGLXController.mm; sourceTree = "<group>"; };
 		9BFA0B3A117E973D00830FF4 /* cglx_logo_1.2_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cglx_logo_1.2_small.png; sourceTree = "<group>"; };
@@ -75,10 +75,10 @@
 				28D7ACF70DDB3853001CB0EB /* OptiActorViewController.m */,
 				9BFA0B3D117E9A6400830FF4 /* OATouchesView.h */,
 				9BFA0B3E117E9A6400830FF4 /* OATouchesView.m */,
-				9BE5ACFF117EC87A005841FC /* OAInfoViewController.h */,
-				9BE5AD00117EC87A005841FC /* OAInfoViewController.m */,
 				9BE5AD9C117ED83E005841FC /* OACGLXController.h */,
 				9BE5AD9D117ED83E005841FC /* OACGLXController.mm */,
+				9BA3C2A61191363F007BD00C /* OAInfoViewController.h */,
+				9BA3C2A71191363F007BD00C /* OAInfoViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -118,9 +118,9 @@
 				9BFA0B90117EA25C00830FF4 /* icon.png */,
 				9BFA0B3A117E973D00830FF4 /* cglx_logo_1.2_small.png */,
 				2899E5210DE3E06400AC0155 /* OptiActorViewController.xib */,
+				9BA3C2A81191363F007BD00C /* OAInfoViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* OptiActor-Info.plist */,
-				9BE5AD01117EC87A005841FC /* OAInfoViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 				2899E5220DE3E06400AC0155 /* OptiActorViewController.xib in Resources */,
 				9BFA0B3B117E973D00830FF4 /* cglx_logo_1.2_small.png in Resources */,
 				9BFA0B91117EA25C00830FF4 /* icon.png in Resources */,
-				9BE5AD03117EC87A005841FC /* OAInfoViewController.xib in Resources */,
+				9BA3C2AA1191363F007BD00C /* OAInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,8 +198,8 @@
 				1D3623260D0F684500981E51 /* OptiActorAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* OptiActorViewController.m in Sources */,
 				9BFA0B3F117E9A6400830FF4 /* OATouchesView.m in Sources */,
-				9BE5AD02117EC87A005841FC /* OAInfoViewController.m in Sources */,
 				9BE5AD9E117ED83E005841FC /* OACGLXController.mm in Sources */,
+				9BA3C2A91191363F007BD00C /* OAInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
