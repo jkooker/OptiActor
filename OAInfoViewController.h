@@ -18,5 +18,6 @@
 @property (retain, nonatomic) IBOutlet OptiActorViewController *mainViewController;
 
 - (IBAction)switchAccelerometer:(id)sender;
+- (NSString *)getIPAddress;
 
 @end
