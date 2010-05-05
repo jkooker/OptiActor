@@ -41,7 +41,7 @@
     [self.view addSubview:hiddenField];
     
     popoverController = [[UIPopoverController alloc] initWithContentViewController:infoViewController];
-    popoverController.popoverContentSize = CGSizeMake(150, 200);
+    popoverController.popoverContentSize = CGSizeMake(320, 500);
 }
 
 - (void)enableAccelerometer:(BOOL)enable {
