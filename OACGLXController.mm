@@ -15,6 +15,7 @@ cglXServer *server;
 
 @implementation OACGLXController
 @synthesize sendAtConstantRate;
+@synthesize mouseButtonState;
 
 - (void)awakeFromNib {
     //server = new cglXServer(CS_HCI_X_SERV, 10291);
@@ -22,19 +23,32 @@ cglXServer *server;
     server->setWaitTime(0);
     
     self.sendAtConstantRate = NO;
+    self.mouseButtonState = 0;
 }
 
 - (void)mouseMovedToX:(float)x Y:(float)y {
     //NSLog(@"Mouse motion to x:%0.2f y:%0.2f", x, y);
     
-    CS_EXT_MOTION_S motion;
-    motion.ID = 0;
-    motion.type = CGLX_MotionNotify;
-    motion.mask = 0;
-    motion.x = x;
-    motion.y = y;
-    
-    server->sendData(&motion);
+    if (mouseButtonState) {
+        CS_EXT_MEVENT_S event;
+        event.ID = 0;
+        event.type = CGLX_MotionNotify;
+        event.mask = 0;
+        event.x = x;
+        event.y = y;
+        event.button = mouseButtonState;
+        
+        server->sendData(&event);
+    } else {
+        CS_EXT_MOTION_S motion;
+        motion.ID = 0;
+        motion.type = CGLX_MotionNotify;
+        motion.mask = 0;
+        motion.x = x;
+        motion.y = y;
+        
+        server->sendData(&motion);
+    }
 }
 
 - (void)wheelMotionUp {

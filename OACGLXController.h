@@ -11,9 +11,11 @@
 
 @interface OACGLXController : NSObject {
     BOOL sendAtConstantRate;
+    int mouseButtonState;
 }
 
 @property BOOL sendAtConstantRate;
+@property int mouseButtonState;
 
 - (void)mouseMovedToX:(float)x Y:(float)y;
 - (void)wheelMotionUp;
