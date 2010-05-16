@@ -137,6 +137,7 @@ enum OASection {
                 case 0:
                     cell.textLabel.text = @"IP";
                     cell.detailTextLabel.text = [self getIPAddress];
+                    cell.detailTextLabel.textColor = [UIColor grayColor];
                     break;
                 case 1:
                     cell.textLabel.text = @"Port";
