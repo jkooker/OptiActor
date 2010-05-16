@@ -18,37 +18,63 @@ cglXServer *server;
 @synthesize mouseButtonState;
 
 - (void)awakeFromNib {
-    //server = new cglXServer(CS_HCI_X_SERV, 10291);
-    server = new cglXServer(CS_HCI_MT_SERV, 10291);
+    server = new cglXServer(CS_HCI_X_SERV, 10291);
+    //server = new cglXServer(CS_HCI_MT_SERV, 10291);
     server->setWaitTime(0);
     
     self.sendAtConstantRate = NO;
     self.mouseButtonState = 0;
 }
 
+- (void)mouseEventAtX:(float)x Y:(float)y down:(BOOL)down {
+    //NSLog(@"Mouse event at x:%0.2f y:%0.2f", x, y);
+
+    CS_EXT_MEVENT_S event;
+    event.ID = 0;
+    event.type = (down ? CGLX_ButtonPress : CGLX_ButtonRelease);
+    switch (mouseButtonState) {
+        case CGLX_LEFT_BUTTON:
+            event.mask = CGLX_Button1Mask;
+            break;
+        case CGLX_MIDDLE_BUTTON:
+            event.mask = CGLX_Button2Mask;
+            break;
+        case CGLX_RIGHT_BUTTON:
+            event.mask = CGLX_Button3Mask;
+            break;
+        default:
+            event.mask = 0;
+            break;
+    }
+    event.x = x;
+    event.y = y;
+    event.button = mouseButtonState;
+}
+
 - (void)mouseMovedToX:(float)x Y:(float)y {
     //NSLog(@"Mouse motion to x:%0.2f y:%0.2f", x, y);
     
-    if (mouseButtonState) {
-        CS_EXT_MEVENT_S event;
-        event.ID = 0;
-        event.type = CGLX_MotionNotify;
-        event.mask = 0;
-        event.x = x;
-        event.y = y;
-        event.button = mouseButtonState;
-        
-        server->sendData(&event);
-    } else {
-        CS_EXT_MOTION_S motion;
-        motion.ID = 0;
-        motion.type = CGLX_MotionNotify;
-        motion.mask = 0;
-        motion.x = x;
-        motion.y = y;
-        
-        server->sendData(&motion);
+    CS_EXT_MOTION_S motion;
+    motion.ID = 0;
+    motion.type = CGLX_MotionNotify;
+    switch (mouseButtonState) {
+        case CGLX_LEFT_BUTTON:
+            motion.mask = CGLX_Button1Mask;
+            break;
+        case CGLX_MIDDLE_BUTTON:
+            motion.mask = CGLX_Button2Mask;
+            break;
+        case CGLX_RIGHT_BUTTON:
+            motion.mask = CGLX_Button3Mask;
+            break;
+        default:
+            motion.mask = 0;
+            break;
     }
+    motion.x = x;
+    motion.y = y;
+    
+    server->sendData(&motion);
 }
 
 - (void)wheelMotionUpAtX:(float)x Y:(float)y {

@@ -16,6 +16,7 @@
 @property BOOL sendAtConstantRate;
 @property int mouseButtonState;
 
+- (void)mouseEventAtX:(float)x Y:(float)y down:(BOOL)down;
 - (void)mouseMovedToX:(float)x Y:(float)y;
 - (void)wheelMotionUpAtX:(float)x Y:(float)y;
 - (void)wheelMotionDownAtX:(float)x Y:(float)y;

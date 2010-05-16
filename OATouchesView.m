@@ -60,7 +60,7 @@
             float x = p.x / [self bounds].size.width;
             float y = p.y / [self bounds].size.height;
 
-            [cglxController mouseMovedToX:x Y:y];
+            [cglxController mouseEventAtX:x Y:y down:YES];
         }
     }
 
@@ -101,6 +101,14 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     for (UITouch *touch in touches) {
+        if ([touchPoints count] == 1) {
+            CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
+            float x = p.x / [self bounds].size.width;
+            float y = p.y / [self bounds].size.height;
+
+            [cglxController mouseEventAtX:x Y:y down:NO];
+        }
+        
         [touchPoints removeObjectForKey:[NSNumber numberWithUnsignedInteger:[touch hash]]];
         [self setNeedsDisplay];
 
