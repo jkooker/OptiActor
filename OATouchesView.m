@@ -16,7 +16,7 @@
 
 - (void)awakeFromNib {
     touchPoints = [[NSMutableDictionary dictionaryWithCapacity:11] retain];
-    sendRawMultitouch = YES;
+    sendRawMultitouch = NO;
 }
 
 #define CIRCLE_RADIUS 40
