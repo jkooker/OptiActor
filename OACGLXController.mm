@@ -170,6 +170,16 @@ cglXServer *server;
     server->sendData(&allBlobs);
 }
 
+- (void)setServerType:(int)type {
+    if (serverType != type) {
+        // shut down old server
+        delete server;
+        // start up new server
+        server = new cglXServer((cs_hci_type_E)serverType, 5510);
+        serverType = type;
+    }
+}
+
 - (void)dealloc {
     delete server;
     [super dealloc];

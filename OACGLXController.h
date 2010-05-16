@@ -12,6 +12,7 @@
     BOOL sendAtConstantRate;
     int mouseButtonState;
     CGPoint lastMousePosition;
+    int serverType;
 }
 
 @property BOOL sendAtConstantRate;
@@ -24,5 +25,6 @@
 - (void)updateAcceleration:(UIAcceleration *)acceleration;
 - (void)keyPress:(NSString *)key;
 - (void)updateMultitouch:(NSDictionary *)touches bounds:(CGRect)bounds;
+- (void)setServerType:(int)type;
 
 @end
