@@ -11,6 +11,7 @@
 @interface OACGLXController : NSObject {
     BOOL sendAtConstantRate;
     int mouseButtonState;
+    CGPoint lastMousePosition;
 }
 
 @property BOOL sendAtConstantRate;

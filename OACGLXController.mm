@@ -29,6 +29,9 @@ cglXServer *server;
 - (void)mouseEventAtX:(float)x Y:(float)y down:(BOOL)down {
     //NSLog(@"Mouse event at x:%0.2f y:%0.2f", x, y);
 
+    lastMousePosition.x = x;
+    lastMousePosition.y = y;
+    
     CS_EXT_MEVENT_S event;
     event.ID = 0;
     event.type = (down ? CGLX_ButtonPress : CGLX_ButtonRelease);
@@ -54,6 +57,9 @@ cglXServer *server;
 - (void)mouseMovedToX:(float)x Y:(float)y {
     //NSLog(@"Mouse motion to x:%0.2f y:%0.2f", x, y);
     
+    lastMousePosition.x = x;
+    lastMousePosition.y = y;
+
     CS_EXT_MOTION_S motion;
     motion.ID = 0;
     motion.type = CGLX_MotionNotify;
@@ -131,8 +137,8 @@ cglXServer *server;
     keyEvent.ID = 0;
     keyEvent.type = CGLX_KeyRelease;
     keyEvent.mask = ((a >= 'A') ? CGLX_SHIFT_MASK : 0);
-    keyEvent.x = 0;
-    keyEvent.y = 0;
+    keyEvent.x = lastMousePosition.x;
+    keyEvent.y = lastMousePosition.y;
     keyEvent.keycode = keycode;
     
     server->sendData(&keyEvent);
