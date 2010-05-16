@@ -140,7 +140,7 @@ enum OASection {
                     break;
                 case 1:
                     cell.textLabel.text = @"Port";
-                    cell.detailTextLabel.text = @"10291";
+                    cell.detailTextLabel.text = @"5510";
                     break;
                 default:
                     break;

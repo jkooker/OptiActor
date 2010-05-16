@@ -18,8 +18,8 @@ cglXServer *server;
 @synthesize mouseButtonState;
 
 - (void)awakeFromNib {
-    server = new cglXServer(CS_HCI_X_SERV, 10291);
-    //server = new cglXServer(CS_HCI_MT_SERV, 10291);
+    server = new cglXServer(CS_HCI_X_SERV, 5510);
+    //server = new cglXServer(CS_HCI_MT_SERV, 5510);
     server->setWaitTime(0);
     
     self.sendAtConstantRate = NO;
