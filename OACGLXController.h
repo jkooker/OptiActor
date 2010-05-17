@@ -13,10 +13,12 @@
     int mouseButtonState;
     CGPoint lastMousePosition;
     int serverType;
+    int serverPort;
 }
 
 @property BOOL sendAtConstantRate;
 @property int mouseButtonState;
+@property int serverPort;
 
 - (void)mouseEventAtX:(float)x Y:(float)y down:(BOOL)down;
 - (void)mouseMovedToX:(float)x Y:(float)y;

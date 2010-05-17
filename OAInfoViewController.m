@@ -141,7 +141,7 @@ enum OASection {
                     break;
                 case 1:
                     cell.textLabel.text = @"Port";
-                    cell.detailTextLabel.text = @"5510";
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", mainViewController.cglxController.serverPort];
                     break;
                 default:
                     break;

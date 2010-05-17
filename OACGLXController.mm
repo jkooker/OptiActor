@@ -16,14 +16,15 @@ cglXServer *server;
 @implementation OACGLXController
 @synthesize sendAtConstantRate;
 @synthesize mouseButtonState;
+@synthesize serverPort;
 
 - (void)awakeFromNib {
-    server = new cglXServer(CS_HCI_X_SERV, 5510);
-    //server = new cglXServer(CS_HCI_MT_SERV, 5510);
-    server->setWaitTime(0);
-    
     self.sendAtConstantRate = NO;
     self.mouseButtonState = 0;
+    self.serverPort = 5510;
+
+    server = new cglXServer(CS_HCI_X_SERV, self.serverPort);
+    server->setWaitTime(0);
 }
 
 - (void)mouseEventAtX:(float)x Y:(float)y down:(BOOL)down {
@@ -175,7 +176,7 @@ cglXServer *server;
         // shut down old server
         delete server;
         // start up new server
-        server = new cglXServer((cs_hci_type_E)serverType, 5510);
+        server = new cglXServer((cs_hci_type_E)type, self.serverPort);
         serverType = type;
     }
 }
