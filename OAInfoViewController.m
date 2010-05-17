@@ -135,12 +135,12 @@ enum OASection {
         case OASectionNetwork:
             switch (indexPath.row) {
                 case 0:
-                    cell.textLabel.text = @"IP";
+                    cell.textLabel.text = @"Server IP";
                     cell.detailTextLabel.text = [self getIPAddress];
-                    cell.detailTextLabel.textColor = [UIColor grayColor];
+                    cell.detailTextLabel.enabled = NO;
                     break;
                 case 1:
-                    cell.textLabel.text = @"Port";
+                    cell.textLabel.text = @"Server Contact Port";
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", mainViewController.cglxController.serverPort];
                     break;
                 default:
