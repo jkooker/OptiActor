@@ -28,7 +28,7 @@ cglXServer *server;
 }
 
 - (void)mouseEventAtX:(float)x Y:(float)y down:(BOOL)down {
-    //NSLog(@"Mouse event at x:%0.2f y:%0.2f", x, y);
+    //NSLog(@"event x:%0.2f y:%0.2f down:%d button:%d", x, y, down, self.mouseButtonState);
 
     lastMousePosition.x = x;
     lastMousePosition.y = y;
@@ -36,27 +36,16 @@ cglXServer *server;
     CS_EXT_MEVENT_S event;
     event.ID = 0;
     event.type = (down ? CGLX_ButtonPress : CGLX_ButtonRelease);
-    switch (mouseButtonState) {
-        case CGLX_LEFT_BUTTON:
-            event.mask = CGLX_Button1Mask;
-            break;
-        case CGLX_MIDDLE_BUTTON:
-            event.mask = CGLX_Button2Mask;
-            break;
-        case CGLX_RIGHT_BUTTON:
-            event.mask = CGLX_Button3Mask;
-            break;
-        default:
-            event.mask = 0;
-            break;
-    }
+    event.mask = 0;
     event.x = x;
     event.y = y;
     event.button = mouseButtonState;
+    
+    server->sendData(&event);
 }
 
 - (void)mouseMovedToX:(float)x Y:(float)y {
-    //NSLog(@"Mouse motion to x:%0.2f y:%0.2f", x, y);
+    //NSLog(@"motion x:%0.2f y:%0.2f button:%d", x, y, self.mouseButtonState);
     
     lastMousePosition.x = x;
     lastMousePosition.y = y;
