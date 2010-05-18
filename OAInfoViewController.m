@@ -99,7 +99,7 @@ enum OASection {
     
     switch (section) {
         case OASectionNetwork:
-            retVal = 2;
+            retVal = 1;
             break;
         case OASectionTouchInterface:
             retVal = OATouchProcessingTypeCount;
@@ -138,10 +138,6 @@ enum OASection {
                     cell.textLabel.text = @"Server IP";
                     cell.detailTextLabel.text = [self getIPAddress];
                     cell.detailTextLabel.enabled = NO;
-                    break;
-                case 1:
-                    cell.textLabel.text = @"Server Contact Port";
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", mainViewController.cglxController.serverPort];
                     break;
                 default:
                     break;

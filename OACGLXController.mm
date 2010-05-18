@@ -21,7 +21,7 @@ cglXServer *server;
 - (void)awakeFromNib {
     self.sendAtConstantRate = NO;
     self.mouseButtonState = 0;
-    self.serverPort = 5510;
+    self.serverPort = -1;
 
     server = new cglXServer(CS_HCI_X_SERV, self.serverPort);
     server->setWaitTime(0);
