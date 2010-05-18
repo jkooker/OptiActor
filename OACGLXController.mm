@@ -125,7 +125,7 @@ cglXServer *server;
     
     CS_EXT_KBEVENT_S keyEvent;
     keyEvent.ID = 0;
-    keyEvent.type = CGLX_KeyRelease;
+    keyEvent.type = CGLX_KeyPress;
     keyEvent.mask = ((a >= 'A') ? CGLX_SHIFT_MASK : 0);
     keyEvent.x = lastMousePosition.x;
     keyEvent.y = lastMousePosition.y;
