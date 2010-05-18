@@ -33,15 +33,26 @@ cglXServer *server;
     lastMousePosition.x = x;
     lastMousePosition.y = y;
     
-    CS_EXT_MEVENT_S event;
-    event.ID = 0;
-    event.type = (down ? CGLX_ButtonPress : CGLX_ButtonRelease);
-    event.mask = 0;
-    event.x = x;
-    event.y = y;
-    event.button = mouseButtonState;
-    
-    server->sendData(&event);
+    if (mouseButtonState) {
+        CS_EXT_MEVENT_S event;
+        event.ID = 0;
+        event.type = (down ? CGLX_ButtonPress : CGLX_ButtonRelease);
+        event.mask = 0;
+        event.x = x;
+        event.y = y;
+        event.button = mouseButtonState;
+        
+        server->sendData(&event);
+    } else {
+        CS_EXT_MOTION_S motion;
+        motion.ID = 0;
+        motion.type = CGLX_MotionNotify;
+        motion.mask = 0;
+        motion.x = x;
+        motion.y = y;
+        
+        server->sendData(&motion);
+    }
 }
 
 - (void)mouseMovedToX:(float)x Y:(float)y {
