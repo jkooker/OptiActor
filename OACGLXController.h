@@ -17,6 +17,7 @@
     int serverType;
     int serverPort;
     NSTimer *multitouchTimer;
+    BOOL isActiveServer;
 }
 
 @property BOOL sendAtConstantRate;
@@ -32,5 +33,6 @@
 - (void)updateMultitouch:(NSDictionary *)touches bounds:(CGRect)bounds;
 - (void)sendMultitouchState:(NSTimer *)theTimer;
 - (void)setServerType:(int)type;
+- (void)enableActiveServer:(BOOL)enable;
 
 @end

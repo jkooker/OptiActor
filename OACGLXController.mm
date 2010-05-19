@@ -209,6 +209,10 @@ cglXServer *server;
     }
 }
 
+- (void)enableActiveServer:(BOOL)enable {
+    isActiveServer = enable;
+}
+
 - (void)dealloc {
     delete server;
     [super dealloc];

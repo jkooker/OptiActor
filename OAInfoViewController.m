@@ -99,7 +99,7 @@ enum OASection {
     
     switch (section) {
         case OASectionNetwork:
-            retVal = 1;
+            retVal = 2;
             break;
         case OASectionTouchInterface:
             retVal = OATouchProcessingTypeCount;
@@ -138,6 +138,10 @@ enum OASection {
                     cell.textLabel.text = @"Server IP";
                     cell.detailTextLabel.text = [self getIPAddress];
                     cell.detailTextLabel.enabled = NO;
+                    break;
+                case 1:
+                    cell.textLabel.text = @"Active Server";
+                    cell.accessoryView = activeServerSwitch;
                     break;
                 default:
                     break;
@@ -248,6 +252,8 @@ enum OASection {
 #pragma mark Memory management
 
 - (void)awakeFromNib {
+    activeServerSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+    [activeServerSwitch addTarget:self action:@selector(switchActiveServer:) forControlEvents:UIControlEventValueChanged];
     accelerometerSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     [accelerometerSwitch addTarget:self action:@selector(switchAccelerometer:) forControlEvents:UIControlEventValueChanged];
 }
@@ -266,12 +272,17 @@ enum OASection {
 
 
 - (void)dealloc {
+    [activeServerSwitch release];
     [accelerometerSwitch release];
     [super dealloc];
 }
 
 #pragma mark -
 #pragma mark Other
+
+- (IBAction)switchActiveServer:(id)sender {
+    [mainViewController.cglxController enableActiveServer:activeServerSwitch.on];
+}
 
 - (IBAction)switchAccelerometer:(id)sender {
     [mainViewController enableAccelerometer:accelerometerSwitch.on];

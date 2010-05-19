@@ -12,11 +12,13 @@
 @interface OAInfoViewController : UITableViewController {
     IBOutlet OptiActorViewController *mainViewController;
     
+    UISwitch *activeServerSwitch;
     UISwitch *accelerometerSwitch;
 }
 
 @property (retain, nonatomic) IBOutlet OptiActorViewController *mainViewController;
 
+- (IBAction)switchActiveServer:(id)sender;
 - (IBAction)switchAccelerometer:(id)sender;
 - (NSString *)getIPAddress;
 
