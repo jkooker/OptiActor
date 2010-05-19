@@ -15,17 +15,17 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CGRect textFieldRect = CGRectMake(0, 0, 150, 20);
 
-    // Uncomment the following line to preserve selection between presentations.
-    self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    ipField = [[UITextField alloc] initWithFrame:textFieldRect];
+    ipField.text = @"137.110.118.154";
+    worldPortField = [[UITextField alloc] initWithFrame:textFieldRect];
+    worldPortField.text = @"0";
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,11 +88,11 @@
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"IP";
-            cell.detailTextLabel.text = @"137.110.118.154";
+            cell.accessoryView = ipField;
             break;
         case 1:
             cell.textLabel.text = @"World/Port";
-            cell.detailTextLabel.text = @"0";
+            cell.accessoryView = worldPortField;
             break;
         case 2:
             cell.textLabel.text = @"Add...";
@@ -174,6 +174,8 @@
 
 
 - (void)dealloc {
+    [ipField release];
+    [worldPortField release];
     [super dealloc];
 }
 

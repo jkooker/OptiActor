@@ -10,7 +10,8 @@
 
 
 @interface OAAddClientViewController : UITableViewController {
-
+    UITextField *ipField;
+    UITextField *worldPortField;
 }
 
 @end
