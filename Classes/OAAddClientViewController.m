@@ -77,12 +77,13 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell to default properties
     cell.textLabel.text = @"";
-    
+    cell.detailTextLabel.text = @"";
+        
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"IP";
@@ -91,6 +92,9 @@
         case 1:
             cell.textLabel.text = @"World/Port";
             cell.detailTextLabel.text = @"0";
+            break;
+        case 2:
+            cell.textLabel.text = @"Add...";
             break;
         default:
             break;
