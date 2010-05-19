@@ -14,7 +14,7 @@ int charToKeyCode(unichar a);
 cglXServer *server;
 
 @implementation OACGLXController
-@synthesize sendAtConstantRate;
+@dynamic sendAtConstantRate;
 @synthesize mouseButtonState;
 @synthesize serverPort;
 
@@ -148,16 +148,27 @@ cglXServer *server;
 #define BLOB_RADIUS 0.02
 
 - (void)updateMultitouch:(NSDictionary *)touchPoints bounds:(CGRect)bounds {
-    NSUInteger touchCount = [touchPoints count];
+    [savedTouchPoints release];
+    savedTouchPoints = [touchPoints retain];
+    savedBounds = bounds;
+    
+    if (!sendAtConstantRate) {
+        [self sendMultitouchState:nil];
+    }
+}
+
+- (void)sendMultitouchState:(NSTimer *)theTimer {
+    NSLog(@"sending!");
+    NSUInteger touchCount = [savedTouchPoints count];
     CS_MT_BLOB_S blobs[touchCount];
     
     int i = 0;
-    for (id key in touchPoints) {
-        CGPoint p = [[touchPoints objectForKey:key] CGPointValue];
-        blobs[i].minX = p.x / bounds.size.width - BLOB_RADIUS;
-        blobs[i].minY = 1 - (p.y / bounds.size.height + BLOB_RADIUS);
-        blobs[i].maxX = p.x / bounds.size.width + BLOB_RADIUS;
-        blobs[i].maxY = 1 - (p.y / bounds.size.height - BLOB_RADIUS);
+    for (id key in savedTouchPoints) {
+        CGPoint p = [[savedTouchPoints objectForKey:key] CGPointValue];
+        blobs[i].minX = p.x / savedBounds.size.width - BLOB_RADIUS;
+        blobs[i].minY = 1 - (p.y / savedBounds.size.height + BLOB_RADIUS);
+        blobs[i].maxX = p.x / savedBounds.size.width + BLOB_RADIUS;
+        blobs[i].maxY = 1 - (p.y / savedBounds.size.height - BLOB_RADIUS);
         blobs[i].pres = 100;
         
         i++;
@@ -169,6 +180,24 @@ cglXServer *server;
     allBlobs.blobs = blobs;
     
     server->sendData(&allBlobs);
+}
+
+- (BOOL)sendAtConstantRate {
+    return sendAtConstantRate;
+}
+
+#define kMultitouchConstantRate (1.0/2.0)
+
+- (void)setSendAtConstantRate:(BOOL)set {
+    sendAtConstantRate = set;
+    
+    if (sendAtConstantRate) {
+        multitouchTimer = [[NSTimer scheduledTimerWithTimeInterval:kMultitouchConstantRate target:self selector:@selector(sendMultitouchState:) userInfo:nil repeats:YES] retain];
+    } else {
+        [multitouchTimer invalidate];
+        [multitouchTimer release];
+    }
+
 }
 
 - (void)setServerType:(int)type {
