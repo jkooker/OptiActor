@@ -47,7 +47,9 @@
     hiddenField.text = @"0"; // throw in a character so the delete key will work!
     [self.view addSubview:hiddenField];
     
-    popoverController = [[UIPopoverController alloc] initWithContentViewController:infoViewController];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:infoViewController];
+    
+    popoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
     popoverController.popoverContentSize = CGSizeMake(320, 400);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillMove:) name:UIKeyboardWillShowNotification object:nil];
