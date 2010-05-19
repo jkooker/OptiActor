@@ -13,10 +13,12 @@
 @interface OptiActorAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
     OptiActorViewController *viewController;
+    UINavigationController *navController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet OptiActorViewController *viewController;
+@property (nonatomic, retain) UINavigationController *navController;
 
 @end
 

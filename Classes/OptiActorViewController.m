@@ -7,6 +7,7 @@
 //
 
 #import "OptiActorViewController.h"
+#import "OptiActorAppDelegate.h"
 #import "OAInfoViewController.h"
 #import "cglXnet/cglXKeyCodeMap.h"
 
@@ -47,9 +48,10 @@
     hiddenField.text = @"0"; // throw in a character so the delete key will work!
     [self.view addSubview:hiddenField];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:infoViewController];
+    OptiActorAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    appDelegate.navController = [[[UINavigationController alloc] initWithRootViewController:infoViewController] autorelease];
     
-    popoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
+    popoverController = [[UIPopoverController alloc] initWithContentViewController:appDelegate.navController];
     popoverController.popoverContentSize = CGSizeMake(320, 500);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillMove:) name:UIKeyboardWillShowNotification object:nil];
