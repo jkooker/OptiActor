@@ -22,8 +22,9 @@ cglXServer *server;
     self.sendAtConstantRate = NO;
     self.mouseButtonState = 0;
     self.serverPort = -1;
+    serverType = 1;
 
-    server = new cglXServer(CS_HCI_X_SERV, self.serverPort);
+    server = new cglXServer((cs_hci_type_E)serverType, self.serverPort);
     server->setWaitTime(0);
 }
 
@@ -211,6 +212,13 @@ cglXServer *server;
 
 - (void)enableActiveServer:(BOOL)enable {
     isActiveServer = enable;
+    
+    delete server;
+    if (enable) {
+        server = new cglXServer((cs_hci_type_E)serverType, self.serverPort, CS_SERV_ACTIVE);
+    } else {
+        server = new cglXServer((cs_hci_type_E)serverType, self.serverPort);
+    }
 }
 
 - (void)dealloc {
