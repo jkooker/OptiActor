@@ -260,8 +260,6 @@ enum OASection {
         // Add Client was pressed.
         OptiActorAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
         [appDelegate.navController pushViewController:addClientViewController animated:YES];
-        
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
