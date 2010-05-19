@@ -76,6 +76,7 @@
 
 - (void)dealloc {
     [hiddenField release];
+    [popoverController release];
     [super dealloc];
 }
 
