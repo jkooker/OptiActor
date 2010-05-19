@@ -100,6 +100,9 @@ enum OASection {
     switch (section) {
         case OASectionNetwork:
             retVal = 2;
+            if (activeServerSwitch.on) {
+                retVal += 1;
+            }
             break;
         case OASectionTouchInterface:
             retVal = OATouchProcessingTypeCount;
@@ -127,6 +130,7 @@ enum OASection {
     
     // Configure the cell to default properties
     cell.textLabel.text = @"";
+    cell.textLabel.enabled = YES;
     cell.detailTextLabel.text = @"";
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -142,6 +146,12 @@ enum OASection {
                 case 1:
                     cell.textLabel.text = @"Active Server";
                     cell.accessoryView = activeServerSwitch;
+                    break;
+                case 2:
+                    cell.textLabel.text = @"Add Client...";
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.textLabel.enabled = NO;
+                    cell.indentationLevel = 1;
                     break;
                 default:
                     break;
@@ -282,6 +292,12 @@ enum OASection {
 
 - (IBAction)switchActiveServer:(id)sender {
     [mainViewController.cglxController enableActiveServer:activeServerSwitch.on];
+    if (!activeServerSwitch.on) {
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:OASectionNetwork]] withRowAnimation:UITableViewRowAnimationTop];
+    } else {
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:OASectionNetwork]] withRowAnimation:UITableViewRowAnimationTop];
+    }
+
 }
 
 - (IBAction)switchAccelerometer:(id)sender {
