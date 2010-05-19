@@ -278,7 +278,9 @@ enum OASection {
 }
 
 - (NSString *)getIPAddress {
-// TODO: use CFHost instead. http://code.google.com/p/amber-framework/source/browse/trunk/CoreNetworking/AFNetworkServer.m?spec=svn362&r=362
+// TODO: use CFHost instead.
+// http://code.google.com/p/amber-framework/source/browse/trunk/CoreNetworking/AFNetworkServer.m?spec=svn362&r=362
+// This version doesn't work in the Simulator.
   NSString *address = @"error";
   struct ifaddrs *interfaces = NULL;
   struct ifaddrs *temp_addr = NULL;
