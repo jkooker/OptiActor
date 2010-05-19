@@ -50,7 +50,7 @@
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:infoViewController];
     
     popoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
-    popoverController.popoverContentSize = CGSizeMake(320, 400);
+    popoverController.popoverContentSize = CGSizeMake(320, 500);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillMove:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillMove:) name:UIKeyboardWillHideNotification object:nil];
