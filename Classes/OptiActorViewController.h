@@ -44,6 +44,8 @@ typedef enum {
 @property OATouchProcessingType touchProcessingType;
 
 - (IBAction)showKeyboard:(id)sender;
+- (void)keyboardWillMove:(NSNotification *)note;
+
 - (IBAction)showInfo:(id)sender;
 
 - (void)showMouseButtons:(BOOL)show;

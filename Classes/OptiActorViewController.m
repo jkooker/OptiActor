@@ -49,6 +49,9 @@
     
     popoverController = [[UIPopoverController alloc] initWithContentViewController:infoViewController];
     popoverController.popoverContentSize = CGSizeMake(320, 400);
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillMove:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillMove:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 // Override to allow orientations other than the default portrait orientation.
@@ -165,6 +168,34 @@ enum cs_hci_type_E
 
 - (IBAction)mouseButtonUp:(id)sender {
     cglxController.mouseButtonState = 0;
+}
+
+- (void)keyboardWillMove:(NSNotification *)note {
+    NSDictionary *info = [note userInfo];
+    CGRect kbBeginFrame = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGRect kbEndFrame = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    kbBeginFrame = [self.view convertRect:kbBeginFrame fromView:nil];
+    kbEndFrame = [self.view convertRect:kbEndFrame fromView:nil];
+    
+    double animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve animationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+    
+    NSLog(@"%@", info);
+    NSLog(@"begin: %@", NSStringFromCGRect(kbBeginFrame));
+    NSLog(@"end: %@", NSStringFromCGRect(kbEndFrame));
+    
+    [UIView beginAnimations:@"OAKeyboardAnimation" context:nil];
+    [UIView setAnimationCurve:animationCurve];
+    [UIView setAnimationDuration:animationDuration];
+
+    CGFloat kbYDelta = kbEndFrame.origin.y - kbBeginFrame.origin.y;
+    CGFloat x = leftButton.center.x;
+
+    leftButton.center = CGPointMake(x, leftButton.center.y + kbYDelta);
+    middleButton.center = CGPointMake(x, middleButton.center.y + kbYDelta);
+    rightButton.center = CGPointMake(x, rightButton.center.y + kbYDelta);
+    
+    [UIView commitAnimations];
 }
 
 - (void)enableAccelerometer:(BOOL)enable {
