@@ -158,7 +158,6 @@ cglXServer *server;
 }
 
 - (void)sendMultitouchState:(NSTimer *)theTimer {
-    NSLog(@"sending!");
     NSUInteger touchCount = [savedTouchPoints count];
     CS_MT_BLOB_S blobs[touchCount];
     

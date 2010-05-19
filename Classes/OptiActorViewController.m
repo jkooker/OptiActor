@@ -181,11 +181,7 @@ enum cs_hci_type_E
     
     double animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     UIViewAnimationCurve animationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
-    
-    NSLog(@"%@", info);
-    NSLog(@"begin: %@", NSStringFromCGRect(kbBeginFrame));
-    NSLog(@"end: %@", NSStringFromCGRect(kbEndFrame));
-    
+        
     [UIView beginAnimations:@"OAKeyboardAnimation" context:nil];
     [UIView setAnimationCurve:animationCurve];
     [UIView setAnimationDuration:animationDuration];
