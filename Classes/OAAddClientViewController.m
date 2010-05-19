@@ -83,7 +83,8 @@
     // Configure the cell to default properties
     cell.textLabel.text = @"";
     cell.detailTextLabel.text = @"";
-        
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"IP";
@@ -95,6 +96,7 @@
             break;
         case 2:
             cell.textLabel.text = @"Add...";
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             break;
         default:
             break;
