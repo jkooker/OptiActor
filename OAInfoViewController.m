@@ -152,6 +152,7 @@ enum OASection {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.textLabel.enabled = NO;
                     cell.indentationLevel = 1;
+                    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                     break;
                 default:
                     break;
@@ -253,6 +254,9 @@ enum OASection {
         
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    } else if (indexPath.section == OASectionNetwork && indexPath.row == 2) {
+        // Add Client was pressed.
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
