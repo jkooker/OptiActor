@@ -221,6 +221,13 @@ cglXServer *server;
     }
 }
 
+- (BOOL)connectRequest:(NSString *)ip world:(int)world {
+    char ipString[16]; // "255.255.255.255\0"
+    [ip getCString:ipString maxLength:16 encoding:NSASCIIStringEncoding];
+
+    return server->connectRequest(ipString, world);
+}
+
 - (void)dealloc {
     delete server;
     [super dealloc];

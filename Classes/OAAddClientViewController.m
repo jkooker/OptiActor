@@ -7,7 +7,9 @@
 //
 
 #import "OAAddClientViewController.h"
-
+#import "OptiActorAppDelegate.h"
+#import "OptiActorViewController.h"
+#import "OACGLXController.h"
 
 @implementation OAAddClientViewController
 
@@ -151,6 +153,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 2) {
+        OptiActorAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        [appDelegate.viewController.cglxController connectRequest:ipField.text world:worldPortField.text.intValue];
+        
         [self.navigationController popViewControllerAnimated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
