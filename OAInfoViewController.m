@@ -7,6 +7,7 @@
 //
 
 #import "OAInfoViewController.h"
+#import "OptiActorAppDelegate.h"
 
 #include <ifaddrs.h>
 #include <arpa/inet.h>
@@ -257,6 +258,9 @@ enum OASection {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if (indexPath.section == OASectionNetwork && indexPath.row == 2) {
         // Add Client was pressed.
+        OptiActorAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        [appDelegate.navController pushViewController:addClientViewController animated:YES];
+        
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }

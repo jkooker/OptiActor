@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "OptiActorViewController.h"
+#import "OAAddClientViewController.h"
 
 @interface OAInfoViewController : UITableViewController {
     IBOutlet OptiActorViewController *mainViewController;
+    IBOutlet OAAddClientViewController *addClientViewController;
     
     UISwitch *activeServerSwitch;
     UISwitch *accelerometerSwitch;
