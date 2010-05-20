@@ -35,5 +35,6 @@
 - (void)setServerType:(int)type;
 - (void)enableActiveServer:(BOOL)enable;
 - (BOOL)connectRequest:(NSString *)ip world:(int)world;
+- (BOOL)disconnectRequest:(NSString *)ip world:(int)world;
 
 @end

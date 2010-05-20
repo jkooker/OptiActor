@@ -228,6 +228,13 @@ cglXServer *server;
     return server->connectRequest(ipString, world);
 }
 
+- (BOOL)disconnectRequest:(NSString *)ip world:(int)world {
+    char ipString[16]; // "255.255.255.255\0"
+    [ip getCString:ipString maxLength:16 encoding:NSASCIIStringEncoding];
+
+    return server->disconnectRequest(ipString, world);
+}
+
 - (void)dealloc {
     delete server;
     [super dealloc];

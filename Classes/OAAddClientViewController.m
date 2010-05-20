@@ -71,7 +71,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 3;
+    return 4;
 }
 
 
@@ -89,6 +89,7 @@
     cell.textLabel.text = @"";
     cell.detailTextLabel.text = @"";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
     switch (indexPath.row) {
         case 0:
@@ -100,8 +101,14 @@
             cell.accessoryView = worldPortField;
             break;
         case 2:
-            cell.textLabel.text = @"Add...";
+            cell.textLabel.text = @"Connect";
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
+        case 3:
+            cell.textLabel.text = @"Disconnect";
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         default:
             break;
@@ -158,6 +165,12 @@
     if (indexPath.row == 2) {
         OptiActorAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
         [appDelegate.viewController.cglxController connectRequest:ipField.text world:worldPortField.text.intValue];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    } else if (indexPath.row == 3) {
+        OptiActorAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        [appDelegate.viewController.cglxController disconnectRequest:ipField.text world:worldPortField.text.intValue];
         
         [self.navigationController popViewControllerAnimated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
