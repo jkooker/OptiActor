@@ -22,11 +22,14 @@
     [super viewDidLoad];
     
     CGRect textFieldRect = CGRectMake(0, 0, 150, 20);
+    UIColor *textColor = [UIColor colorWithRed:0.337 green:0.416 blue:0.562 alpha:1.000];
 
     ipField = [[UITextField alloc] initWithFrame:textFieldRect];
     ipField.text = @"137.110.118.154";
+    ipField.textColor = textColor;
     worldPortField = [[UITextField alloc] initWithFrame:textFieldRect];
     worldPortField.text = @"0";
+    worldPortField.textColor = textColor;
 }
 
 /*
