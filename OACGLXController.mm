@@ -11,7 +11,17 @@
 
 int charToKeyCode(unichar a);
 
-cglXServer *server;
+class OACglXServer : public cglXServer {
+public:
+    OACglXServer(cs_hci_type_E type = CS_HCI_UNDEF, int port=-1, cs_serv_mode_E mode = CS_SERV_PASSIVE)
+    : cglXServer(type, port, mode) {}
+    
+	virtual void signal_connected(const char *IP=NULL, int ID=-1, int port=-1) {}
+	virtual void signal_disconnected(const char *IP=NULL, int ID=-1, int port=-1) {}
+	virtual void signal_allive(const char *IP=NULL, int ID=-1, int port=-1) {}
+};
+
+OACglXServer *server;
 
 @implementation OACGLXController
 @dynamic sendAtConstantRate;
@@ -24,7 +34,7 @@ cglXServer *server;
     self.serverPort = -1;
     serverType = 1;
 
-    server = new cglXServer((cs_hci_type_E)serverType, self.serverPort);
+    server = new OACglXServer((cs_hci_type_E)serverType, self.serverPort);
     server->setWaitTime(0);
 }
 
@@ -205,7 +215,7 @@ cglXServer *server;
         // shut down old server
         delete server;
         // start up new server
-        server = new cglXServer((cs_hci_type_E)type, self.serverPort);
+        server = new OACglXServer((cs_hci_type_E)type, self.serverPort);
         serverType = type;
     }
 }
@@ -215,9 +225,9 @@ cglXServer *server;
     
     delete server;
     if (enable) {
-        server = new cglXServer((cs_hci_type_E)serverType, self.serverPort, CS_SERV_ACTIVE);
+        server = new OACglXServer((cs_hci_type_E)serverType, self.serverPort, CS_SERV_ACTIVE);
     } else {
-        server = new cglXServer((cs_hci_type_E)serverType, self.serverPort);
+        server = new OACglXServer((cs_hci_type_E)serverType, self.serverPort);
     }
 }
 
