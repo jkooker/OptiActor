@@ -186,7 +186,7 @@ cglXServer *server;
     return sendAtConstantRate;
 }
 
-#define kMultitouchConstantRate (1.0/2.0)
+#define kMultitouchConstantRate (1.0/60.0)
 
 - (void)setSendAtConstantRate:(BOOL)set {
     sendAtConstantRate = set;
