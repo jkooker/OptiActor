@@ -13,6 +13,7 @@
 @class OAInfoViewController;
 
 typedef enum {
+    OATouchProcessingTypeTrackpad,
     OATouchProcessingTypeMouse,
     OATouchProcessingTypeMultitouchEvent,
     OATouchProcessingTypeMultitouchConstant,

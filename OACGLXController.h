@@ -28,6 +28,10 @@
 - (void)mouseMovedToX:(float)x Y:(float)y;
 - (void)wheelMotionUpAtX:(float)x Y:(float)y;
 - (void)wheelMotionDownAtX:(float)x Y:(float)y;
+
+- (void)trackpadMotionX:(float)x Y:(float)y;
+- (void)trackpadScroll:(BOOL)down;
+
 - (void)updateAcceleration:(UIAcceleration *)acceleration;
 - (void)keyPress:(NSString *)key;
 - (void)updateMultitouch:(NSDictionary *)touches bounds:(CGRect)bounds;

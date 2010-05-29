@@ -38,6 +38,7 @@ OACglXServer *server;
     server->setWaitTime(0);
 }
 
+#pragma mark Mouse Mode
 - (void)mouseEventAtX:(float)x Y:(float)y down:(BOOL)down {
     //NSLog(@"event x:%0.2f y:%0.2f down:%d button:%d", x, y, down, self.mouseButtonState);
 
@@ -123,6 +124,52 @@ OACglXServer *server;
     server->sendData(&event);
 }
 
+#pragma mark Trackpad Mode
+- (void)trackpadMotionX:(float)x Y:(float)y {
+    lastMousePosition.x += x;
+    lastMousePosition.y += y;
+    
+    if (lastMousePosition.x < 0) lastMousePosition.x = 0;
+    if (lastMousePosition.x > 1) lastMousePosition.x = 1;
+    if (lastMousePosition.y < 0) lastMousePosition.y = 0;
+    if (lastMousePosition.y > 1) lastMousePosition.y = 1;
+    
+    CS_EXT_MOTION_S motion;
+    motion.ID = 0;
+    motion.type = CGLX_MotionNotify;
+    switch (mouseButtonState) {
+        case CGLX_LEFT_BUTTON:
+            motion.mask = CGLX_Button1Mask;
+            break;
+        case CGLX_MIDDLE_BUTTON:
+            motion.mask = CGLX_Button2Mask;
+            break;
+        case CGLX_RIGHT_BUTTON:
+            motion.mask = CGLX_Button3Mask;
+            break;
+        default:
+            motion.mask = 0;
+            break;
+    }
+    motion.x = lastMousePosition.x;
+    motion.y = lastMousePosition.y;
+    
+    server->sendData(&motion);
+}
+
+- (void)trackpadScroll:(BOOL)down {
+    CS_EXT_MEVENT_S event;
+    event.ID = 0;
+    event.type = CGLX_ButtonRelease;
+    event.mask = 0;
+    event.x = lastMousePosition.x;
+    event.y = lastMousePosition.y;
+    event.button = (down ? CGLX_WHEEL_DOWN : CGLX_WHEEL_UP);
+    
+    server->sendData(&event);
+}
+
+#pragma mark Accelerometer
 - (void)updateAcceleration:(UIAcceleration *)acceleration {
     //NSLog(@"accelerometer update x:%0.2f y:%0.2f z:0.2f", acceleration.x, acceleration.y, acceleration.z);
     
@@ -139,6 +186,7 @@ OACglXServer *server;
     server->sendData(&event);
 }
 
+#pragma mark Keyboard
 - (void)keyPress:(NSString *)key {
     unichar a = [key characterAtIndex:0];
     int keycode = charToKeyCode(a);
@@ -156,6 +204,7 @@ OACglXServer *server;
     server->sendData(&keyEvent);
 }
 
+#pragma mark Multitouch
 #define BLOB_RADIUS 0.02
 
 - (void)updateMultitouch:(NSDictionary *)touchPoints bounds:(CGRect)bounds {
@@ -210,6 +259,7 @@ OACglXServer *server;
 
 }
 
+#pragma mark Server Configuration
 - (void)setServerType:(int)type {
     if (serverType != type) {
         // shut down old server

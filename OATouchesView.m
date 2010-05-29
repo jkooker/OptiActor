@@ -13,10 +13,12 @@
 
 @synthesize cglxController;
 @synthesize sendRawMultitouch;
+@synthesize isInTrackpadMode;
 
 - (void)awakeFromNib {
     touchPoints = [[NSMutableDictionary dictionaryWithCapacity:11] retain];
     sendRawMultitouch = NO;
+    isInTrackpadMode = YES;
 }
 
 #define CIRCLE_RADIUS 40
@@ -56,14 +58,15 @@
         [cglxController updateMultitouch:touchPoints bounds:[self bounds]];
     } else {
         if ([touchPoints count] == 1) {
-            CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
-            float x = p.x / [self bounds].size.width;
-            float y = p.y / [self bounds].size.height;
+            if (!isInTrackpadMode) {
+                CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
+                float x = p.x / [self bounds].size.width;
+                float y = p.y / [self bounds].size.height;
 
-            [cglxController mouseEventAtX:x Y:y down:YES];
+                [cglxController mouseEventAtX:x Y:y down:YES];
+            }
         }
     }
-
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -77,23 +80,41 @@
     if (sendRawMultitouch) {
         [cglxController updateMultitouch:touchPoints bounds:[self bounds]];
     } else {
-        if ([touchPoints count] == 1) {
-            CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
-            float x = p.x / [self bounds].size.width;
-            float y = p.y / [self bounds].size.height;
+        if (isInTrackpadMode) {
+            if ([touchPoints count] == 1) {
+                UITouch *touch = [touches anyObject];
+                CGPoint p = [touch locationInView:self];
+                CGPoint pp = [touch previousLocationInView:self];
+                float x = (p.x - pp.x) / [self bounds].size.width;
+                float y = (p.y - pp.y) / [self bounds].size.height;
 
-            [cglxController mouseMovedToX:x Y:y];
-        } else if ([touchPoints count] == 2) {
-            // wheel up/down based on touch motion
-            UITouch *touch = [touches anyObject];
-            CGPoint p = [touch locationInView:self];
-            float x = p.x / [self bounds].size.width;
-            float y = p.y / [self bounds].size.height;
+                [cglxController trackpadMotionX:x Y:y];
+            } else if ([touchPoints count] == 2) {
+                // wheel up/down based on touch motion
+                UITouch *touch = [touches anyObject];
+                CGPoint p = [touch locationInView:self];
 
-            if (p.y > [touch previousLocationInView:self].y) {
-                [cglxController wheelMotionDownAtX:x Y:y];
-            } else {
-                [cglxController wheelMotionUpAtX:x Y:y];
+                [cglxController trackpadScroll:(p.y > [touch previousLocationInView:self].y) ? YES : NO];
+            }
+        } else {
+            if ([touchPoints count] == 1) {
+                CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
+                float x = p.x / [self bounds].size.width;
+                float y = p.y / [self bounds].size.height;
+
+                [cglxController mouseMovedToX:x Y:y];
+            } else if ([touchPoints count] == 2) {
+                // wheel up/down based on touch motion
+                UITouch *touch = [touches anyObject];
+                CGPoint p = [touch locationInView:self];
+                float x = p.x / [self bounds].size.width;
+                float y = p.y / [self bounds].size.height;
+
+                if (p.y > [touch previousLocationInView:self].y) {
+                    [cglxController wheelMotionDownAtX:x Y:y];
+                } else {
+                    [cglxController wheelMotionUpAtX:x Y:y];
+                }
             }
         }
     }
@@ -102,11 +123,13 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     for (UITouch *touch in touches) {
         if ([touchPoints count] == 1) {
-            CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
-            float x = p.x / [self bounds].size.width;
-            float y = p.y / [self bounds].size.height;
+            if (!isInTrackpadMode) {
+                CGPoint p = [[[touchPoints allValues] objectAtIndex:0] CGPointValue];
+                float x = p.x / [self bounds].size.width;
+                float y = p.y / [self bounds].size.height;
 
-            [cglxController mouseEventAtX:x Y:y down:NO];
+                [cglxController mouseEventAtX:x Y:y down:NO];
+            }
         }
         
         [touchPoints removeObjectForKey:[NSNumber numberWithUnsignedInteger:[touch hash]]];
@@ -123,8 +146,5 @@
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     NSLog(@"touches cancelled");
 }
-
-
-
 
 @end

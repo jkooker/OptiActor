@@ -14,9 +14,11 @@
     
     NSMutableDictionary *touchPoints;
     BOOL sendRawMultitouch;
+    BOOL isInTrackpadMode;
 }
 
 @property (nonatomic, retain) IBOutlet OACGLXController *cglxController;
 @property BOOL sendRawMultitouch;
+@property BOOL isInTrackpadMode;
 
 @end

@@ -125,20 +125,29 @@ enum cs_hci_type_E
 
 - (void)setTouchProcessingType:(OATouchProcessingType)type {
     switch (type) {
+        case OATouchProcessingTypeTrackpad:
+            [self showMouseButtons:YES];
+            touchesView.sendRawMultitouch = NO;
+            touchesView.isInTrackpadMode = YES;
+            [cglxController setServerType:CS_HCI_X_SERV];
+            break;
         case OATouchProcessingTypeMouse:
             [self showMouseButtons:YES];
             touchesView.sendRawMultitouch = NO;
+            touchesView.isInTrackpadMode = NO;
             [cglxController setServerType:CS_HCI_X_SERV];
             break;
         case OATouchProcessingTypeMultitouchEvent:
             [self showMouseButtons:NO];
             touchesView.sendRawMultitouch = YES;
+            touchesView.isInTrackpadMode = NO;
             cglxController.sendAtConstantRate = NO;
             [cglxController setServerType:CS_HCI_MT_SERV];
             break;
         case OATouchProcessingTypeMultitouchConstant:
             [self showMouseButtons:NO];
             touchesView.sendRawMultitouch = YES;
+            touchesView.isInTrackpadMode = NO;
             cglxController.sendAtConstantRate = YES;
             [cglxController setServerType:CS_HCI_MT_SERV];
             break;

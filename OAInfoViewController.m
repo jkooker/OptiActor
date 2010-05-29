@@ -163,6 +163,12 @@ enum OASection {
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             
             switch (indexPath.row) {
+                case OATouchProcessingTypeTrackpad:
+                    cell.textLabel.text = @"Trackpad";
+                    if (mainViewController.touchProcessingType == OATouchProcessingTypeTrackpad) {
+                        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    }
+                    break;
                 case OATouchProcessingTypeMouse:
                     cell.textLabel.text = @"Mouse";
                     if (mainViewController.touchProcessingType == OATouchProcessingTypeMouse) {
