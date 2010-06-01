@@ -257,7 +257,7 @@ enum OASection {
     if (indexPath.section == OASectionTouchInterface) {
         [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:mainViewController.touchProcessingType inSection:indexPath.section]].accessoryType = UITableViewCellAccessoryNone;
         
-        mainViewController.touchProcessingType = indexPath.row;
+        mainViewController.touchProcessingType = (OATouchProcessingType)indexPath.row;
         
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         

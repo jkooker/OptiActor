@@ -7,52 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* OptiActorAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* OptiActorAppDelegate.m */; };
+		1D3623260D0F684500981E51 /* OptiActorAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* OptiActorAppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2899E5220DE3E06400AC0155 /* OptiActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* OptiActorViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		28D7ACF80DDB3853001CB0EB /* OptiActorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* OptiActorViewController.m */; };
+		28D7ACF80DDB3853001CB0EB /* OptiActorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* OptiActorViewController.mm */; };
 		9B2CBE75118FB46000D5F723 /* libcglXnet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2CBE74118FB46000D5F723 /* libcglXnet.a */; };
-		9B791BB211A3C449002C2DA5 /* OAAddClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B791BB011A3C449002C2DA5 /* OAAddClientViewController.m */; };
+		9B791BB211A3C449002C2DA5 /* OAAddClientViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B791BB011A3C449002C2DA5 /* OAAddClientViewController.mm */; };
 		9B791BB311A3C449002C2DA5 /* OAAddClientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B791BB111A3C449002C2DA5 /* OAAddClientViewController.xib */; };
-		9BA3C2A91191363F007BD00C /* OAInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3C2A71191363F007BD00C /* OAInfoViewController.m */; };
+		9BA3C2A91191363F007BD00C /* OAInfoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3C2A71191363F007BD00C /* OAInfoViewController.mm */; };
 		9BA3C2AA1191363F007BD00C /* OAInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA3C2A81191363F007BD00C /* OAInfoViewController.xib */; };
 		9BE5AD9E117ED83E005841FC /* OACGLXController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5AD9D117ED83E005841FC /* OACGLXController.mm */; };
 		9BFA0B3B117E973D00830FF4 /* cglx_logo_1.2_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BFA0B3A117E973D00830FF4 /* cglx_logo_1.2_small.png */; };
-		9BFA0B3F117E9A6400830FF4 /* OATouchesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA0B3E117E9A6400830FF4 /* OATouchesView.m */; };
+		9BFA0B3F117E9A6400830FF4 /* OATouchesView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA0B3E117E9A6400830FF4 /* OATouchesView.mm */; };
 		9BFA0B91117EA25C00830FF4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BFA0B90117EA25C00830FF4 /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* OptiActorAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptiActorAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* OptiActorAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptiActorAppDelegate.m; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* OptiActorAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OptiActorAppDelegate.mm; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* OptiActor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OptiActor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* OptiActorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptiActorViewController.xib; sourceTree = "<group>"; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28D7ACF60DDB3853001CB0EB /* OptiActorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptiActorViewController.h; sourceTree = "<group>"; };
-		28D7ACF70DDB3853001CB0EB /* OptiActorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptiActorViewController.m; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* OptiActorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OptiActorViewController.mm; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* OptiActor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptiActor_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* OptiActor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OptiActor-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9B2CBE74118FB46000D5F723 /* libcglXnet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcglXnet.a; sourceTree = "<group>"; };
 		9B5471E011819C9C0041766E /* cglXnet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = cglXnet.framework; sourceTree = "<group>"; };
 		9B791BAF11A3C449002C2DA5 /* OAAddClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAAddClientViewController.h; sourceTree = "<group>"; };
-		9B791BB011A3C449002C2DA5 /* OAAddClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAAddClientViewController.m; sourceTree = "<group>"; };
-		9B791BB111A3C449002C2DA5 /* OAAddClientViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OAAddClientViewController.xib; path = Classes/OAAddClientViewController.xib; sourceTree = "<group>"; };
-		9BA3C2A61191363F007BD00C /* OAInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAInfoViewController.h; path = ../OAInfoViewController.h; sourceTree = "<group>"; };
-		9BA3C2A71191363F007BD00C /* OAInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAInfoViewController.m; path = ../OAInfoViewController.m; sourceTree = "<group>"; };
+		9B791BB011A3C449002C2DA5 /* OAAddClientViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OAAddClientViewController.mm; sourceTree = "<group>"; };
+		9B791BB111A3C449002C2DA5 /* OAAddClientViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OAAddClientViewController.xib; sourceTree = "<group>"; };
+		9BA3C2A61191363F007BD00C /* OAInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAInfoViewController.h; sourceTree = "<group>"; };
+		9BA3C2A71191363F007BD00C /* OAInfoViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OAInfoViewController.mm; sourceTree = "<group>"; };
 		9BA3C2A81191363F007BD00C /* OAInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OAInfoViewController.xib; sourceTree = "<group>"; };
-		9BE5AD9C117ED83E005841FC /* OACGLXController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OACGLXController.h; path = ../OACGLXController.h; sourceTree = "<group>"; };
-		9BE5AD9D117ED83E005841FC /* OACGLXController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = OACGLXController.mm; path = ../OACGLXController.mm; sourceTree = "<group>"; };
+		9BE5AD9C117ED83E005841FC /* OACGLXController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OACGLXController.h; sourceTree = "<group>"; };
+		9BE5AD9D117ED83E005841FC /* OACGLXController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OACGLXController.mm; sourceTree = "<group>"; };
 		9BFA0B3A117E973D00830FF4 /* cglx_logo_1.2_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cglx_logo_1.2_small.png; sourceTree = "<group>"; };
-		9BFA0B3D117E9A6400830FF4 /* OATouchesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OATouchesView.h; path = ../OATouchesView.h; sourceTree = "<group>"; };
-		9BFA0B3E117E9A6400830FF4 /* OATouchesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OATouchesView.m; path = ../OATouchesView.m; sourceTree = "<group>"; };
+		9BFA0B3D117E9A6400830FF4 /* OATouchesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OATouchesView.h; sourceTree = "<group>"; };
+		9BFA0B3E117E9A6400830FF4 /* OATouchesView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OATouchesView.mm; sourceTree = "<group>"; };
 		9BFA0B90117EA25C00830FF4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,17 +75,17 @@
 			isa = PBXGroup;
 			children = (
 				1D3623240D0F684500981E51 /* OptiActorAppDelegate.h */,
-				1D3623250D0F684500981E51 /* OptiActorAppDelegate.m */,
+				1D3623250D0F684500981E51 /* OptiActorAppDelegate.mm */,
 				28D7ACF60DDB3853001CB0EB /* OptiActorViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* OptiActorViewController.m */,
+				28D7ACF70DDB3853001CB0EB /* OptiActorViewController.mm */,
 				9BFA0B3D117E9A6400830FF4 /* OATouchesView.h */,
-				9BFA0B3E117E9A6400830FF4 /* OATouchesView.m */,
+				9BFA0B3E117E9A6400830FF4 /* OATouchesView.mm */,
 				9BE5AD9C117ED83E005841FC /* OACGLXController.h */,
 				9BE5AD9D117ED83E005841FC /* OACGLXController.mm */,
 				9BA3C2A61191363F007BD00C /* OAInfoViewController.h */,
-				9BA3C2A71191363F007BD00C /* OAInfoViewController.m */,
+				9BA3C2A71191363F007BD00C /* OAInfoViewController.mm */,
 				9B791BAF11A3C449002C2DA5 /* OAAddClientViewController.h */,
-				9B791BB011A3C449002C2DA5 /* OAAddClientViewController.m */,
+				9B791BB011A3C449002C2DA5 /* OAAddClientViewController.mm */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -204,12 +204,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* OptiActorAppDelegate.m in Sources */,
-				28D7ACF80DDB3853001CB0EB /* OptiActorViewController.m in Sources */,
-				9BFA0B3F117E9A6400830FF4 /* OATouchesView.m in Sources */,
+				1D3623260D0F684500981E51 /* OptiActorAppDelegate.mm in Sources */,
+				28D7ACF80DDB3853001CB0EB /* OptiActorViewController.mm in Sources */,
+				9BFA0B3F117E9A6400830FF4 /* OATouchesView.mm in Sources */,
 				9BE5AD9E117ED83E005841FC /* OACGLXController.mm in Sources */,
-				9BA3C2A91191363F007BD00C /* OAInfoViewController.m in Sources */,
-				9B791BB211A3C449002C2DA5 /* OAAddClientViewController.m in Sources */,
+				9BA3C2A91191363F007BD00C /* OAInfoViewController.mm in Sources */,
+				9B791BB211A3C449002C2DA5 /* OAAddClientViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
