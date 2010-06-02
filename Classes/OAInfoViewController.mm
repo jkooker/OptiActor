@@ -320,7 +320,7 @@ enum OASection {
 // TODO: use CFHost instead.
 // http://code.google.com/p/amber-framework/source/browse/trunk/CoreNetworking/AFNetworkServer.m?spec=svn362&r=362
 // This version doesn't work in the Simulator.
-  NSString *address = @"error";
+  NSString *address = @"0.0.0.0";
   struct ifaddrs *interfaces = NULL;
   struct ifaddrs *temp_addr = NULL;
   int success = 0;
