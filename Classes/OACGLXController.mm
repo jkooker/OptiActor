@@ -9,8 +9,6 @@
 #import "OACGLXController.h"
 #import "cglXnet/cglXNet.h"
 
-int charToKeyCode(unichar a);
-
 class OACglXServer : public cglXServer {
 public:
     OACglXServer(cs_hci_type_E type = CS_HCI_UNDEF, int port=-1, cs_serv_mode_E mode = CS_SERV_PASSIVE)
@@ -189,9 +187,8 @@ OACglXServer *server;
 #pragma mark Keyboard
 - (void)keyPress:(NSString *)key {
     unichar a = [key characterAtIndex:0];
-    int keycode = charToKeyCode(a);
 
-    //NSLog(@"key code: %d", keycode);
+    //NSLog(@"key code: %d", a);
     
     CS_EXT_KBEVENT_S keyEvent;
     keyEvent.ID = 0;
@@ -199,7 +196,7 @@ OACglXServer *server;
     keyEvent.mask = ((a >= 'A') ? CGLX_SHIFT_MASK : 0);
     keyEvent.x = lastMousePosition.x;
     keyEvent.y = lastMousePosition.y;
-    keyEvent.keycode = keycode;
+    keyEvent.keycode = a;
     
     server->sendData(&keyEvent);
 }
@@ -301,8 +298,3 @@ OACglXServer *server;
 }
 
 @end
-
-int charToKeyCode(unichar a) {
-    // TODO: implement lookup table here
-    return a;
-}
