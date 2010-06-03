@@ -9,7 +9,7 @@
 #import "OptiActorViewController.h"
 #import "OptiActorAppDelegate.h"
 #import "OAInfoViewController.h"
-#import "cglXnet/cglXKeyCodeMap.h"
+#import "cglXnet/cglXNet.h"
 
 @implementation OptiActorViewController
 
@@ -110,18 +110,6 @@
 - (OATouchProcessingType)touchProcessingType {
     return touchProcessingType;
 }
-
-// TODO: fix this copy/paste hack
-enum cs_hci_type_E
-{
-	CS_HCI_UNDEF		= 0,
-	CS_HCI_X_SERV		= 1,
-	CS_HCI_SPM_SERV		= 2,
-	CS_HCI_JOY_SERV		= 3,
-	CS_HCI_ASC_SERV		= 4,
-	CS_HCI_MT_SERV		= 5,
-	CS_HCI_CUST_SERV	= 6
-};
 
 - (void)setTouchProcessingType:(OATouchProcessingType)type {
     switch (type) {
