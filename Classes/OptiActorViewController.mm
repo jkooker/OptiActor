@@ -159,17 +159,36 @@
 }
 
 - (IBAction)mouseButtonDown:(id)sender {
+    int buttonID = 0;
+    
     if (sender == leftButton) {
         cglxController.mouseButtonState = CGLX_LEFT_BUTTON;
+        buttonID = CGLX_LEFT_BUTTON;
     } else if (sender == middleButton) {
         cglxController.mouseButtonState = CGLX_MIDDLE_BUTTON;
+        buttonID = CGLX_MIDDLE_BUTTON;
     } else if (sender == rightButton) {
         cglxController.mouseButtonState = CGLX_RIGHT_BUTTON;
+        buttonID = CGLX_RIGHT_BUTTON;
+    }
+    
+    if (touchesView.isInTrackpadMode) {
+        [cglxController buttonEvent:buttonID down:YES];
     }
 }
 
 - (IBAction)mouseButtonUp:(id)sender {
     cglxController.mouseButtonState = 0;
+    
+    if (touchesView.isInTrackpadMode) {
+        if (sender == leftButton) {
+            [cglxController buttonEvent:CGLX_LEFT_BUTTON down:NO];
+        } else if (sender == middleButton) {
+            [cglxController buttonEvent:CGLX_MIDDLE_BUTTON down:NO];
+        } else if (sender == rightButton) {
+            [cglxController buttonEvent:CGLX_RIGHT_BUTTON down:NO];
+        }
+    }
 }
 
 - (void)keyboardWillMove:(NSNotification *)note {

@@ -167,6 +167,18 @@ OACglXServer *server;
     server->sendData(&event);
 }
 
+- (void)buttonEvent:(int)buttonID down:(BOOL)down {
+    CS_EXT_MEVENT_S event;
+    event.ID = 0;
+    event.type = (down ? CGLX_ButtonPress : CGLX_ButtonRelease);
+    event.mask = 0;
+    event.x = lastMousePosition.x;
+    event.y = lastMousePosition.y;
+    event.button = buttonID;
+    
+    server->sendData(&event);
+}
+
 #pragma mark Accelerometer
 - (void)updateAcceleration:(UIAcceleration *)acceleration {
     //NSLog(@"accelerometer update x:%0.2f y:%0.2f z:0.2f", acceleration.x, acceleration.y, acceleration.z);

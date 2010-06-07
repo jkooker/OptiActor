@@ -31,6 +31,7 @@
 
 - (void)trackpadMotionX:(float)x Y:(float)y;
 - (void)trackpadScroll:(BOOL)down;
+- (void)buttonEvent:(int)buttonID down:(BOOL)down;
 
 - (void)updateAcceleration:(UIAcceleration *)acceleration;
 - (void)keyPress:(NSString *)key;
